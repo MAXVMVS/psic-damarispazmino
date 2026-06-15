@@ -17,7 +17,8 @@ import {
   Heart,
   Brain,
   ShieldCheck,
-  CalendarCheck
+  CalendarCheck,
+  Palette
 } from 'lucide-react';
 
 /* --- CUSTOM SPECIFIC PSYCHOLOGY LOGO COMPONENT --- */
@@ -53,18 +54,21 @@ function PsychologyLogo({ className = "" }: { className?: string }) {
 }
 
 export default function App() {
+  /* --- WHATSAPP CONFIG --- */
+  const whatsappNum = import.meta.env.VITE_WHATSAPP_NUMBER || "593983186044";
+  const formattedWhatsapp = whatsappNum.startsWith("593") && whatsappNum.length === 12
+    ? `+593 ${whatsappNum.slice(3, 5)} ${whatsappNum.slice(5, 8)} ${whatsappNum.slice(8)}`
+    : (whatsappNum.startsWith("09") && whatsappNum.length === 10
+      ? `+593 ${whatsappNum.slice(1, 3)} ${whatsappNum.slice(3, 6)} ${whatsappNum.slice(6)}`
+      : whatsappNum);
+
   /* --- STATE MANAGEMENT --- */
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('inicio');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  /* Contact Form state */
-  const [contactName, setContactName] = useState('');
-  const [contactEmail, setContactEmail] = useState('');
-  const [contactPhone, setContactPhone] = useState('');
-  const [contactService, setContactService] = useState('Asesoría General');
-  const [contactMsg, setContactMsg] = useState('');
+  /* Contact Form state removed */
 
   /* Booking system state */
   const [selectedService, setSelectedService] = useState<{title: string, price: string, type: string} | null>(null);
@@ -124,24 +128,49 @@ export default function App() {
     setSelectedService({ title: serviceName, price, type });
   };
 
-  const handleContactSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    triggerToast(
-      "¡Mensaje enviado con éxito!",
-      `Gracias ${contactName}, me comunicaré contigo a la brevedad posible.`
-    );
-    // Reset fields
-    setContactName('');
-    setContactEmail('');
-    setContactPhone('');
-    setContactMsg('');
+  const handleFloatingWhatsappClick = () => {
+    const text = "Hola Psic. Damaris Pazmiño, me gustaría recibir información sobre sus consultas y servicios de psicología.";
+    window.open(`https://wa.me/${whatsappNum}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   const handleBookingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const formspreeId = import.meta.env.VITE_FORMSPREE_ID;
+    const serviceText = selectedService ? `${selectedService.title} (${selectedService.price})` : "Consulta General";
+
+    // 1. Envío a Formspree en segundo plano
+    if (formspreeId) {
+      fetch(`https://formspree.io/f/${formspreeId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nombre: bookingName,
+          email: bookingEmail,
+          telefono: bookingPhone,
+          servicio: serviceText,
+          fecha: bookingDate,
+          hora: bookingTime,
+          tipo: 'Solicitud de Pre-Reserva'
+        })
+      }).catch(err => console.error("Error al enviar a Formspree:", err));
+    }
+
+    // 2. Redirección a WhatsApp
+    const message = `Hola Psic. Damaris, me gustaría realizar una pre-reserva de consulta:
+- *Nombre:* ${bookingName}
+- *Correo:* ${bookingEmail}
+- *Teléfono:* ${bookingPhone}
+- *Servicio:* ${serviceText}
+- *Fecha sugerida:* ${bookingDate}
+- *Horario sugerido:* ${bookingTime}
+
+Quedo atento/a a su respuesta. ¡Muchas gracias!`;
+
+    window.open(`https://wa.me/${whatsappNum}?text=${encodeURIComponent(message)}`, '_blank');
+
     triggerToast(
       "¡Solicitud de reserva recibida!",
-      `Tu sesión de "${selectedService?.title}" para el día ${bookingDate} ha sido pre-agendada.`
+      `Tu sesión de "${selectedService?.title}" para el día ${bookingDate} ha sido enviada vía WhatsApp.`
     );
     // Close modal & reset fields
     setSelectedService(null);
@@ -159,25 +188,17 @@ export default function App() {
         <div className="container header-container">
           <div className="logo-wrapper" onClick={() => handleScrollTo('inicio')} style={{ cursor: 'pointer' }}>
             <PsychologyLogo />
-            <span className="logo-text-title">Dra. Damaris <span>Pazmiño</span></span>
+            <span className="logo-text-title">Psic. Damaris <span>Pazmiño</span></span>
           </div>
 
           <nav className={`navigation ${mobileMenuOpen ? 'opened' : ''}`}>
-            <a 
-              id="nav-inicio"
-              href="#inicio" 
-              className={`nav-link ${activeTab === 'inicio' ? 'active' : ''}`}
-              onClick={(e) => { e.preventDefault(); handleScrollTo('inicio'); }}
-            >
-              Inicio
-            </a>
             <a 
               id="nav-refugio"
               href="#refugio" 
               className={`nav-link ${activeTab === 'refugio' ? 'active' : ''}`} 
               onClick={(e) => { e.preventDefault(); handleScrollTo('refugio'); }}
             >
-              El Refugio (Sobre Mí)
+              Tu lugar seguro (Sobre Mí)
             </a>
             <a 
               id="nav-servicios"
@@ -235,17 +256,14 @@ export default function App() {
               <Sparkles size={14} /> Espacio Seguro Integral
             </div>
             <h1 id="hero-main-heading" className="hero-title">
-              Un espacio seguro para comprender lo que sientes y recuperar tu equilibrio emocional
+              Acompañamiento psicológico profesional para tu bienestar y crecimiento.
             </h1>
             <div className="hero-description-container">
               <p id="hero-desc-lead" className="hero-paragraph-lead">
-                A veces parece que nadie entiende lo que pasa por tu mente. La ansiedad, el estrés, la tristeza, la presión académica, los conflictos familiares o la sensación de estar perdido pueden hacer que cada día sea más difícil de lo que debería.
-              </p>
-              <p id="hero-desc-sub" className="hero-paragraph-sub">
-                Aquí encontrarás un acompañamiento profesional, cercano y basado en evidencia científica para ayudarte a comprender tus emociones, fortalecer tu bienestar y construir herramientas que te acompañen durante toda la vida.
+                Te ofrezco un espacio seguro de escucha y orientación basado en la Terapia Cognitivo-Conductual y la Neuropsicología. Diseñemos juntos herramientas prácticas y científicas para superar la ansiedad, el estrés y construir el bienestar que mereces.
               </p>
               <p id="hero-desc-cta" className="hero-paragraph-cta-text">
-                <Heart size={18} style={{ color: 'var(--color-terracotta)' }} /> Agenda tu primera consulta y da el primer paso hacia tu bienestar emocional.
+                <Heart size={18} style={{ color: 'var(--color-terracotta)' }} /> Da el primer paso hacia tu bienestar hoy.
               </p>
             </div>
             
@@ -272,17 +290,8 @@ export default function App() {
             <div className="circle-decor circle-decor-1"></div>
             <div className="circle-decor circle-decor-2"></div>
             
-            <div id="hero-visual-card" className="hero-glass-visual">
-              <img src="/assets/therapy_abstract_bg.png" alt="Concepto Terapéutico" style={{ width: '85%', height: '85%', objectFit: 'cover', borderRadius: '24px', boxShadow: '0 10px 25px rgba(0,0,0,0.05)' }} />
-              <div id="floating-stat-box" className="hero-floating-stat">
-                <div className="stat-icon">
-                  <ShieldCheck size={18} />
-                </div>
-                <div className="stat-text">
-                  <span className="stat-title">100% Confidencial</span>
-                  <span className="stat-sub">Código Deontológico</span>
-                </div>
-              </div>
+            <div id="hero-visual-image-wrapper" className="hero-image-wrapper">
+              <img src="/assets/cozy_therapy_chair.jpg" alt="Espacio de Acompañamiento" className="hero-main-img" />
             </div>
           </div>
         </div>
@@ -291,104 +300,101 @@ export default function App() {
       {/* 3. SECCIÓN EL REFUGIO (SOBRE MÍ Y ENFOQUE TCC/NEUROPSICOLÓGICO) */}
       <section id="refugio" className="refugio">
         <div className="container">
-          <div className="section-head">
-            <span id="refugio-tag" className="section-tag">El Refugio</span>
-            <h2 id="refugio-title" className="section-title">Sobre mí y mi Enfoque Terapéutico</h2>
-            <p id="refugio-sub" className="section-sub">Un espacio diseñado para brindarte escucha activa, claridad científica y contención emocional.</p>
+          <div className="refugio-header-container">
+            <div className="section-head">
+              <span id="refugio-tag" className="section-tag">Tu lugar seguro</span>
+              <h2 id="refugio-title" className="section-title">Sobre mí y mi Enfoque Terapéutico</h2>
+              <p id="refugio-sub" className="section-sub">Un espacio de acompañamiento cercano y especializado, donde la escucha, el conocimiento científico y el bienestar emocional se unen para apoyarte en tu proceso.</p>
+            </div>
+            <div className="refugio-header-visual">
+              <img src="/assets/youth_therapy_office.jpg" alt="Consultorio de Acompañamiento Juvenil" className="refugio-header-img" />
+            </div>
           </div>
 
-          <div className="refugio-grid">
-            <div className="profile-card">
-              <div className="profile-sticky-outline">
-                <div id="about-profile-frame" className="profile-frame">
-                  <div className="profile-image-container">
-                    <img src="/assets/damaris_portrait.png" alt="Dra. Damaris Pazmiño" className="profile-image" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  </div>
-                  <div className="profile-meta">
-                    <span id="profile-card-name" className="profile-name">Dra. Damaris Pazmiño</span>
-                    <span id="profile-card-role" className="profile-subtitle">Psicóloga Clínica y Especialista Neurocognitiva</span>
-                    <div className="profile-credentials-pill">
-                      <div className="credential-pill">Terapia Cognitivo-Conductual</div>
-                      <div className="credential-pill">Neuropsicología Aplicada</div>
-                    </div>
-                  </div>
+          <div className="bento-grid">
+            {/* Bento Card 1: Portrait Photo */}
+            <div className="bento-card bento-photo-card">
+              <img src="/assets/damaris_portrait.png" alt="Psic. Damaris Pazmiño" />
+            </div>
+
+            {/* Bento Card 2: Condensed Bio */}
+            <div className="bento-card bento-bio-card">
+              <span className="section-tag" style={{ fontSize: '1.05rem', marginBottom: '0.25rem', fontWeight: 700 }}>Sobre mí</span>
+              <h3 className="bento-card-title" style={{ fontSize: '1.65rem' }}>Hola, soy Damaris Pazmiño</h3>
+              <p className="bento-card-p" style={{ fontWeight: 500, color: 'var(--color-navy)' }}>
+                Psicóloga y Neuropsicóloga Clínica, especialista en psicoterapia infanto-juvenil y adultos, y facilitadora de talleres de Arteterapia.
+              </p>
+              <p className="bento-card-p">
+                Ofrezco un espacio seguro y profesional para comprender tus emociones, fortalecer tus recursos personales y desarrollar estrategias prácticas basadas en evidencia científica.
+              </p>
+              <p className="bento-card-p">
+                Mi objetivo es acompañarte a superar cambios, desafíos emocionales o etapas de incertidumbre, combinando la calidez humana con el rigor científico para que afrontes la vida con mayor seguridad y confianza.
+              </p>
+            </div>
+
+            {/* Bento Card 3: Therapeutic Approach */}
+            <div className="bento-card bento-approach-card">
+              <span className="section-tag" style={{ fontSize: '1.05rem', marginBottom: '0.25rem', fontWeight: 700 }}>Estrategias científicas</span>
+              <h3 className="bento-card-title">Mi Enfoque Terapéutico</h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                <div>
+                  <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-navy)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <Brain size={16} style={{ color: 'var(--color-sage)' }} /> Terapia Cognitivo-Conductual (TCC)
+                  </h4>
+                  <p className="bento-card-p" style={{ fontSize: '0.85rem', marginTop: '0.15rem' }}>
+                    Identificamos patrones de pensamiento y conducta para desarrollar herramientas prácticas aplicables en tu día a día.
+                  </p>
+                </div>
+                <div>
+                  <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-navy)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <Sparkles size={16} style={{ color: 'var(--color-sage)' }} /> Perspectiva Neuropsicológica
+                  </h4>
+                  <p className="bento-card-p" style={{ fontSize: '0.85rem', marginTop: '0.15rem' }}>
+                    Comprendemos procesos clave como la atención, memoria, aprendizaje y regulación emocional para un desarrollo integral.
+                  </p>
+                </div>
+                <div>
+                  <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-navy)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <Heart size={16} style={{ color: 'var(--color-sage)' }} /> Psicoeducación Activa
+                  </h4>
+                  <p className="bento-card-p" style={{ fontSize: '0.85rem', marginTop: '0.15rem' }}>
+                    Comprender lo que te ocurre es el primer paso para tomar un rol activo en tu propio bienestar y crecimiento.
+                  </p>
                 </div>
               </div>
             </div>
 
-            <div className="refugio-about">
-              <div id="about-text-content" className="about-intro-block">
-                <h3 id="about-greeting" style={{ fontSize: '1.6rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '0.2rem' }}>
-                  Consideraciones importantes de crecimiento
-                </h3>
-                <p>
-                  <strong>Hola, soy Damaris Pazmiño</strong>
-                </p>
-                <p>
-                  Psicóloga especializada en el acompañamiento de adolescentes y jóvenes adultos que desean comprender mejor sus emociones, fortalecer su autoestima y desarrollar habilidades para afrontar los desafíos de la vida cotidiana.
-                </p>
-                <p>
-                  Sé que crecer, tomar decisiones importantes, enfrentar cambios, adaptarse a nuevas etapas o lidiar con la presión social puede generar dudas, miedo, ansiedad o sensación de agotamiento. Muchas veces se intenta manejar todo en silencio, esperando que las cosas mejoren por sí solas.
-                </p>
-                <p>
-                  Mi objetivo es ofrecerte un espacio de escucha, respeto y confianza donde puedas sentirte comprendido, sin juicios y con la tranquilidad de saber que no tienes que enfrentar tus dificultades solo.
-                </p>
-                <p>
-                  Juntos trabajaremos para entender lo que está ocurriendo, descubrir las causas que influyen en tu bienestar emocional y desarrollar estrategias prácticas que te permitan vivir con mayor equilibrio, claridad y seguridad.
-                </p>
-              </div>
-
-              {/* ENFOQUE SECTION */}
-              <div id="approach-text-box" className="enfoque-title-box">
-                <span className="section-tag" style={{ fontSize: '0.75rem' }}>Estrategias científicas</span>
-                <h3>Terapia basada en ciencia, adaptada a tu realidad</h3>
-                <div className="enfoque-paragraph-spaced">
-                  <p>
-                    Mi trabajo integra la Terapia Cognitivo-Conductual (TCC) con una perspectiva neuropsicológica para ayudarte a comprender cómo tus pensamientos, emociones y hábitos influyen en tu bienestar diario.
-                  </p>
-                  <p>
-                    En términos simples, aprenderás a identificar los patrones que mantienen el malestar emocional y a desarrollar nuevas herramientas para responder de manera más saludable a las situaciones que enfrentas.
-                  </p>
-                  <p>
-                    La perspectiva neuropsicológica permite comprender mejor cómo funcionan procesos como la atención, la memoria, el aprendizaje, la regulación emocional y la toma de decisiones, aspectos especialmente importantes durante la adolescencia y la juventud.
-                  </p>
-                  <p>
-                    Además, utilizo la psicoeducación como una herramienta fundamental para que entiendas lo que ocurre en tu mente y puedas participar activamente en tu proceso terapéutico.
-                  </p>
-                </div>
-
-                <div className="expect-box-container">
-                  <h4 className="expect-subtitle">¿Qué puedes esperar del proceso?</h4>
-                  <ul className="expect-list">
-                    <li className="expect-item">
-                      <span className="expect-icon-check"><Check size={12} /></span>
-                      <span>Un espacio seguro y confidencial.</span>
-                    </li>
-                    <li className="expect-item">
-                      <span className="expect-icon-check"><Check size={12} /></span>
-                      <span>Objetivos claros y personalizados.</span>
-                    </li>
-                    <li className="expect-item">
-                      <span className="expect-icon-check"><Check size={12} /></span>
-                      <span>Herramientas prácticas para aplicar en tu vida diaria.</span>
-                    </li>
-                    <li className="expect-item">
-                      <span className="expect-icon-check"><Check size={12} /></span>
-                      <span>Mayor autoconocimiento y regulación emocional.</span>
-                    </li>
-                    <li className="expect-item">
-                      <span className="expect-icon-check"><Check size={12} /></span>
-                      <span>Acompañamiento profesional basado en evidencia científica.</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+            {/* Bento Card 4: What to Expect */}
+            <div className="bento-card bento-expect-card">
+              <h3 className="bento-card-title" style={{ fontSize: '1.1rem' }}>¿Qué puedes esperar del proceso?</h3>
+              <ul className="expect-list" style={{ gap: '0.6rem' }}>
+                <li className="expect-item" style={{ fontSize: '0.85rem' }}>
+                  <span className="expect-icon-check" style={{ width: '1.1rem', height: '1.1rem' }}><Check size={10} /></span>
+                  <span>Un espacio seguro, confidencial y libre de juicios.</span>
+                </li>
+                <li className="expect-item" style={{ fontSize: '0.85rem' }}>
+                  <span className="expect-icon-check" style={{ width: '1.1rem', height: '1.1rem' }}><Check size={10} /></span>
+                  <span>Atención cercana, profesional y personalizada.</span>
+                </li>
+                <li className="expect-item" style={{ fontSize: '0.85rem' }}>
+                  <span className="expect-icon-check" style={{ width: '1.1rem', height: '1.1rem' }}><Check size={10} /></span>
+                  <span>Objetivos claros adaptados a tus necesidades.</span>
+                </li>
+                <li className="expect-item" style={{ fontSize: '0.85rem' }}>
+                  <span className="expect-icon-check" style={{ width: '1.1rem', height: '1.1rem' }}><Check size={10} /></span>
+                  <span>Herramientas prácticas para aplicar en tu vida diaria.</span>
+                </li>
+                <li className="expect-item" style={{ fontSize: '0.85rem' }}>
+                  <span className="expect-icon-check" style={{ width: '1.1rem', height: '1.1rem' }}><Check size={10} /></span>
+                  <span>Acompañamiento basado en evidencia científica.</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4. GRID DE 3 TARJETAS DE SERVICIOS Y PRECIOS (GLASSMORPHISM) */}
+      {/* 4. GRID DE 5 TARJETAS DE SERVICIOS Y PRECIOS (GLASSMORPHISM) */}
       <section id="servicios" className="servicios">
         <div className="container">
           <div className="section-head" style={{ textAlign: 'center', margin: '0 auto 4.5rem auto' }}>
@@ -400,76 +406,108 @@ export default function App() {
           <div id="services-cards-grid" className="services-grid">
             
             {/* SERVICE CARD 1 */}
-            <div id="service-card-eval" className="service-card">
+            <div id="service-card-eval-inicial" className="service-card">
               <div className="service-icon-heading">
                 <Brain size={24} />
               </div>
-              <h3 className="service-title">Evaluación Neuropsicológica Inicial</h3>
+              <h3 className="service-title">Valoración Neuropsicológica Inicial</h3>
               <p className="service-description">
-                Una valoración integral para comprender tus necesidades emocionales, cognitivas y conductuales, estableciendo una hoja de ruta clara para el proceso terapéutico.
+                Primer encuentro para comprender el motivo de consulta, conocer antecedentes y estructurar el plan de evaluación.
               </p>
               
               <span className="service-includes-title">Incluye:</span>
               <ul className="service-features-list">
                 <li className="service-feature-item">
-                  <Check size={16} /> Entrevista inicial detallada.
+                  <Check size={16} /> Entrevista clínica y observación.
                 </li>
                 <li className="service-feature-item">
-                  <Check size={16} /> Evaluación clínica y psicométrica.
+                  <Check size={16} /> Revisión de antecedentes.
                 </li>
                 <li className="service-feature-item">
-                  <Check size={16} /> Identificación de objetivos terapéuticos.
-                </li>
-                <li className="service-feature-item">
-                  <Check size={16} /> Recomendaciones personalizadas estructuradas.
+                  <Check size={16} /> Definición de objetivos de evaluación.
                 </li>
               </ul>
 
               <div className="service-meta-session">
                 <span className="service-duration-label">
-                  <Clock size={14} /> Duración de valoración inicial
+                  <Clock size={14} /> Duración: 60 minutos
                 </span>
                 <span className="service-price-tag">
-                  USD $60 <span className="service-price-sub">/ evaluación</span>
+                  USD $60 <span className="service-price-sub">/ sesión inicial</span>
                 </span>
               </div>
 
               <button 
-                id="service-cta-eval"
+                id="service-cta-eval-inicial"
                 className="btn-premium service-cta-btn" 
-                onClick={() => openBookingModal("Evaluación Neuropsicológica Inicial", "USD $60", "Evaluación integral")}
+                onClick={() => openBookingModal("Valoración Neuropsicológica Inicial", "USD $60", "Evaluación inicial")}
               >
-                Reservar evaluación
+                Reservar valoración
               </button>
             </div>
 
-            {/* SERVICE CARD 2 (RECOMMENDED) */}
-            <div id="service-card-online" className="service-card recommended">
-              <span className="badge-recommended">Más Solicitado</span>
+            {/* SERVICE CARD 2 (RECOMMENDED EVALUATION) */}
+            <div id="service-card-eval-integral" className="service-card recommended">
+              <span className="badge-recommended">Proceso Completo</span>
+              <div className="service-icon-heading">
+                <Brain size={24} style={{ color: 'var(--color-terracotta)' }} />
+              </div>
+              <h3 className="service-title">Evaluación Neuropsicológica Integral</h3>
+              <p className="service-description">
+                Estudio detallado del funcionamiento cognitivo, emocional y conductual para guiar una intervención personalizada.
+              </p>
+              
+              <span className="service-includes-title">Incluye:</span>
+              <ul className="service-features-list">
+                <li className="service-feature-item">
+                  <Check size={16} /> Pruebas de memoria y atención.
+                </li>
+                <li className="service-feature-item">
+                  <Check size={16} /> Informe clínico con pautas recomendadas.
+                </li>
+                <li className="service-feature-item">
+                  <Check size={16} /> Sesión de devolución de resultados.
+                </li>
+              </ul>
+
+              <div className="service-meta-session">
+                <span className="service-duration-label">
+                  <Clock size={14} /> 4 a 8 sesiones (según el caso)
+                </span>
+                <span className="service-price-tag" style={{ color: 'var(--color-terracotta-dark)' }}>
+                  Desde $150 <span className="service-price-sub">/ valor de referencia</span>
+                </span>
+              </div>
+
+              <button 
+                id="service-cta-eval-integral"
+                className="btn-premium service-cta-btn" 
+                onClick={() => openBookingModal("Evaluación Neuropsicológica Integral", "Personalizado (desde $150)", "Evaluación integral")}
+              >
+                Solicitar evaluación
+              </button>
+            </div>
+
+            {/* SERVICE CARD 3 */}
+            <div id="service-card-online" className="service-card">
               <div className="service-icon-heading">
                 <Video size={24} />
               </div>
               <h3 className="service-title">Sesión Individual Online</h3>
               <p className="service-description">
-                Atención psicológica desde cualquier lugar de Ecuador mediante videollamada privada y segura.
+                Acompañamiento terapéutico confidencial en modalidad virtual, ideal para tratar ansiedad, estrés y autoestima.
               </p>
               
-              <span className="service-includes-title">Ideal para:</span>
-              <ul className="service-features-list" style={{ flexGrow: 1 }}>
+              <span className="service-includes-title">Beneficios:</span>
+              <ul className="service-features-list">
                 <li className="service-feature-item">
-                  <Check size={16} /> Tratamiento de Ansiedad de todo nivel.
+                  <Check size={16} /> Flexibilidad horaria y comodidad.
                 </li>
                 <li className="service-feature-item">
-                  <Check size={16} /> Estrés académico o laboral.
+                  <Check size={16} /> Enfoque personalizado basado en evidencia.
                 </li>
                 <li className="service-feature-item">
-                  <Check size={16} /> Problemas de autoestima y autoconcepto.
-                </li>
-                <li className="service-feature-item">
-                  <Check size={16} /> Regulación emocional y asertividad.
-                </li>
-                <li className="service-feature-item">
-                  <Check size={16} /> Procesos de cambio y crecimiento personal.
+                  <Check size={16} /> Sesiones seguras desde cualquier lugar.
                 </li>
               </ul>
 
@@ -477,43 +515,40 @@ export default function App() {
                 <span className="service-duration-label">
                   <Clock size={14} /> Duración: 50 minutos
                 </span>
-                <span className="service-price-tag" style={{ color: 'var(--color-terracotta-dark)' }}>
-                  USD $35 <span className="service-price-sub">/ sesión virtual</span>
+                <span className="service-price-tag">
+                  USD $25 <span className="service-price-sub">/ sesión virtual</span>
                 </span>
               </div>
 
               <button 
                 id="service-cta-online"
                 className="btn-premium service-cta-btn"
-                onClick={() => openBookingModal("Sesión Individual Online", "USD $35", "Cita Online")}
+                onClick={() => openBookingModal("Sesión Individual Online", "USD $25", "Cita Online")}
               >
                 Agendar sesión online
               </button>
             </div>
 
-            {/* SERVICE CARD 3 */}
+            {/* SERVICE CARD 4 */}
             <div id="service-card-presencial" className="service-card">
               <div className="service-icon-heading">
                 <MapPin size={24} />
               </div>
               <h3 className="service-title">Sesión Presencial en Guayaquil</h3>
               <p className="service-description">
-                Un espacio cómodo, profesional y acogedor para trabajar de forma cercana tus objetivos terapéuticos.
+                Consulta individual en un consultorio físico cálido y seguro para trabajar de manera conjunta en tus metas.
               </p>
               
               <span className="service-includes-title">Incluye:</span>
               <ul className="service-features-list">
                 <li className="service-feature-item">
-                  <Check size={16} /> Atención personalizada uno a uno.
+                  <Check size={16} /> Espacio físico cómodo y confidencial.
                 </li>
                 <li className="service-feature-item">
-                  <Check size={16} /> Plan de trabajo individual ajustado.
+                  <Check size={16} /> Sesiones personalizadas 1 a 1.
                 </li>
                 <li className="service-feature-item">
-                  <Check size={16} /> Seguimiento continuo del proceso presencial.
-                </li>
-                <li className="service-feature-item">
-                  <Check size={16} /> Ambiente seguro y relajante.
+                  <Check size={16} /> Plan de trabajo terapéutico adaptado.
                 </li>
               </ul>
 
@@ -522,16 +557,57 @@ export default function App() {
                   <Clock size={14} /> Duración: 50 minutos
                 </span>
                 <span className="service-price-tag">
-                  USD $40 <span className="service-price-sub">/ sesión física</span>
+                  USD $35 <span className="service-price-sub">/ sesión física</span>
                 </span>
               </div>
 
               <button 
                 id="service-cta-presencial"
                 className="btn-premium service-cta-btn"
-                onClick={() => openBookingModal("Sesión Presencial en Guayaquil", "USD $40", "Cita Física")}
+                onClick={() => openBookingModal("Sesión Presencial en Guayaquil", "USD $35", "Cita Física")}
               >
                 Agendar sesión presencial
+              </button>
+            </div>
+
+            {/* SERVICE CARD 5 */}
+            <div id="service-card-arteterapia" className="service-card">
+              <div className="service-icon-heading">
+                <Palette size={24} />
+              </div>
+              <h3 className="service-title">Talleres de Arteterapia</h3>
+              <p className="service-description">
+                Talleres vivenciales grupales que utilizan el arte como canal terapéutico de expresión y autoconocimiento.
+              </p>
+              
+              <span className="service-includes-title">Incluye:</span>
+              <ul className="service-features-list">
+                <li className="service-feature-item">
+                  <Check size={16} /> Todos los materiales artísticos.
+                </li>
+                <li className="service-feature-item">
+                  <Check size={16} /> Sin necesidad de experiencia previa.
+                </li>
+                <li className="service-feature-item">
+                  <Check size={16} /> Enfoque vivencial libre de juicios.
+                </li>
+              </ul>
+
+              <div className="service-meta-session">
+                <span className="service-duration-label">
+                  <Clock size={14} /> Duración: 3 horas
+                </span>
+                <span className="service-price-tag">
+                  USD $35 <span className="service-price-sub">/ participante</span>
+                </span>
+              </div>
+
+              <button 
+                id="service-cta-arteterapia"
+                className="btn-premium service-cta-btn"
+                onClick={() => openBookingModal("Talleres de Arteterapia", "USD $35", "Taller Grupal")}
+              >
+                Reservar taller
               </button>
             </div>
 
@@ -612,139 +688,61 @@ export default function App() {
         </div>
       </section>
 
-      {/* 6. FORMULARIO DE CONTACTO / AGENDAS CON VALIDACIÓN */}
+      {/* 6. CONTACT DETAILS (CENTERED AND DIRECT) */}
       <section id="contacto" className="contacto">
         <div className="container contacto-layout">
-          <div className="contacto-info">
-            <div>
-              <span id="contact-tag" className="section-tag">Contacto directo</span>
-              <h2 id="contact-heading" className="section-title">Comienza tu Proceso</h2>
-              <p id="contact-desc" className="contacto-para" style={{ marginTop: '0.75rem' }}>
-                Escríbeme con total tranquilidad. Estoy aquí para aclarar tus dudas antes de agendar o coordinar los horarios que mejor se adapten a ti.
-              </p>
-            </div>
-
-            <div className="contact-card-direct">
-              <div className="contact-direct-item">
-                <div className="contact-direct-icon">
-                  <Phone size={18} />
-                </div>
-                <div className="contact-direct-text">
-                  <span className="contact-direct-label">WhatsApp de Contacto</span>
-                  <span className="contact-direct-value">+593 99 999 9999</span>
-                </div>
-              </div>
-
-              <div className="contact-direct-item">
-                <div className="contact-direct-icon">
-                  <Mail size={18} />
-                </div>
-                <div className="contact-direct-text">
-                  <span className="contact-direct-label">Correo Profesional</span>
-                  <span className="contact-direct-value">consultas@damarispazmino.com</span>
-                </div>
-              </div>
-
-              <div className="contact-direct-item">
-                <div className="contact-direct-icon">
-                  <MapPin size={18} />
-                </div>
-                <div className="contact-direct-text">
-                  <span className="contact-direct-label">Consultorio Físico</span>
-                  <span className="contact-direct-value">Guayaquil, Ecuador</span>
-                </div>
-              </div>
-            </div>
-
-            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-              <a href="#" className="footer-link" aria-label="Instagram de la Psicóloga" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 500 }}>
-                <Instagram size={20} /> @psic.damarispazmino
-              </a>
-            </div>
+          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            <span id="contact-tag" className="section-tag">Contacto directo</span>
+            <h2 id="contact-heading" className="section-title">Comienza tu Proceso</h2>
+            <p id="contact-desc" className="contacto-para" style={{ marginTop: '0.75rem', maxWidth: '540px', margin: '0.75rem auto 0 auto' }}>
+              Escríbeme con total tranquilidad. Estoy aquí para aclarar tus dudas y coordinar tu sesión de pre-reserva de manera directa.
+            </p>
           </div>
 
-          <div id="contact-form-container" className="contact-form-glass-container">
-            <h3 className="contact-form-title">
-              <MessageSquare size={20} style={{ color: 'var(--color-sage)' }} strokeWidth={2.5} /> Enviar un Mensaje
-            </h3>
-            
-            <form id="scientific-contact-form" className="contact-form" onSubmit={handleContactSubmit}>
-              <div className="form-field-group">
-                <label className="form-label" htmlFor="client-name">Nombre completo *</label>
-                <input 
-                  type="text" 
-                  id="client-name" 
-                  className="form-input-control" 
-                  placeholder="Ej. Sofía Mendoza" 
-                  required 
-                  value={contactName}
-                  onChange={(e) => setContactName(e.target.value)}
-                />
+          <div className="contact-cards-grid">
+            <div 
+              className="contact-direct-card" 
+              onClick={handleFloatingWhatsappClick} 
+              style={{ cursor: 'pointer' }}
+            >
+              <div className="contact-direct-icon">
+                <Phone size={20} />
               </div>
+              <span className="contact-direct-label">WhatsApp de Contacto</span>
+              <span className="contact-direct-value">0984442648</span>
+            </div>
 
-              <div className="form-group-double">
-                <div className="form-field-group">
-                  <label className="form-label" htmlFor="client-email">Email *</label>
-                  <input 
-                    type="email" 
-                    id="client-email" 
-                    className="form-input-control" 
-                    placeholder="sofia@ejemplo.com" 
-                    required 
-                    value={contactEmail}
-                    onChange={(e) => setContactEmail(e.target.value)}
-                  />
-                </div>
-                <div className="form-field-group">
-                  <label className="form-label" htmlFor="client-phone">Teléfono / WhatsApp *</label>
-                  <input 
-                    type="tel" 
-                    id="client-phone" 
-                    className="form-input-control" 
-                    placeholder="Ej. +593 99 123 4567" 
-                    required 
-                    value={contactPhone}
-                    onChange={(e) => setContactPhone(e.target.value)}
-                  />
-                </div>
+            <div 
+              className="contact-direct-card"
+              onClick={() => window.open("https://instagram.com/psic.damarispazmino", "_blank")}
+              style={{ cursor: 'pointer' }}
+            >
+              <div className="contact-direct-icon">
+                <Instagram size={20} />
               </div>
+              <span className="contact-direct-label">Instagram</span>
+              <span className="contact-direct-value">@psic.damarispazmino</span>
+            </div>
 
-              <div className="form-field-group">
-                <label className="form-label" htmlFor="client-service-pref">Servicios de Interés</label>
-                <select 
-                  id="client-service-pref" 
-                  className="form-input-control form-select-control"
-                  value={contactService}
-                  onChange={(e) => setContactService(e.target.value)}
-                >
-                  <option value="Asesoría General">Asesoría General / Pregunta Inicial</option>
-                  <option value="Evaluación Neuropsicológica">Evaluación Neuropsicológica Inicial (USD $60)</option>
-                  <option value="Sesión Online">Sesión Individual Online (USD $35)</option>
-                  <option value="Sesión Presencial">Sesión Presencial en Guayaquil (USD $40)</option>
-                </select>
+            <div className="contact-direct-card">
+              <div className="contact-direct-icon">
+                <Mail size={20} />
               </div>
+              <span className="contact-direct-label">Correo Profesional</span>
+              <span className="contact-direct-value">consultas@damarispazmino.com</span>
+            </div>
 
-              <div className="form-field-group">
-                <label className="form-label" htmlFor="client-message">¿En qué situación te encuentras hoy? *</label>
-                <textarea 
-                  id="client-message" 
-                  className="form-input-control form-textarea-control" 
-                  placeholder="Por favor, comparte brevemente tu situación o las dudas que deseas resolver..." 
-                  required
-                  value={contactMsg}
-                  onChange={(e) => setContactMsg(e.target.value)}
-                ></textarea>
+            <div 
+              className="contact-direct-card"
+              onClick={() => window.open("https://www.google.com/maps?q=Guayaquil", "_blank")}
+              style={{ cursor: 'pointer' }}
+            >
+              <div className="contact-direct-icon">
+                <MapPin size={20} />
               </div>
-
-              <button 
-                id="contact-form-submit-btn" 
-                type="submit" 
-                className="btn-premium" 
-                style={{ width: '100%', marginTop: '0.5rem' }}
-              >
-                Enviar mi solicitud
-              </button>
-            </form>
+              <span className="contact-direct-label">Consultorio Físico</span>
+              <span className="contact-direct-value">Guayaquil, Ecuador</span>
+            </div>
           </div>
         </div>
       </section>
@@ -783,7 +781,7 @@ export default function App() {
         <div className="container">
           <div className="footer-top">
             <div className="footer-brand">
-              <span id="footer-branding-title" className="footer-logo-title">Dra. Damaris <span>Pazmiño</span></span>
+              <span id="footer-branding-title" className="footer-logo-title">Psic. Damaris <span>Pazmiño</span></span>
               <p className="footer-desc">
                 Acompañando a adolescentes y jóvenes adultos en el camino del autoconocimiento, la autovaloración constructiva y la regulación afectiva guiada por la ciencia.
               </p>
@@ -817,8 +815,8 @@ export default function App() {
           </div>
 
           <div className="footer-bottom">
-            <span>&copy; {new Date().getFullYear()} Dra. Damaris Pazmiño. Todos los derechos reservados.</span>
-            <span>Desarrollo de Interfaz Premium de Psicología Clínica.</span>
+            <span>&copy; {new Date().getFullYear()} Psic. Damaris Pazmiño. Todos los derechos reservados.</span>
+            <span>Desarrollo por MAX AI - Digital Studio.</span>
           </div>
         </div>
       </footer>
@@ -826,13 +824,15 @@ export default function App() {
       {/* --- FLOATING ACTION BUTTON FOR HEALING AND CALM WRITING --- */}
       <div 
         id="floating-pulsing-action-trigger" 
-        className="floating-cta-trigger" 
+        className="floating-cta-trigger whatsapp-floating" 
         style={{ display: scrolled ? 'flex' : 'none' }}
-        onClick={() => openBookingModal("Consulta Inmediata Recomendada", "Variable", "Cita Directa")}
-        title="Agendar una sesión"
+        onClick={handleFloatingWhatsappClick}
+        title="Chatear por WhatsApp"
       >
-        <div className="pulsing-wave"></div>
-        <CalendarCheck size={20} />
+        <div className="pulsing-wave whatsapp-pulse"></div>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.963C16.388 1.981 13.93 1.95 12.01 1.95c-5.438 0-9.863 4.372-9.867 9.802-.001 1.814.48 3.593 1.393 5.168L2.51 21.062l4.137-1.908zm11.758-6.834c-.294-.147-1.743-.86-2.012-.958-.269-.098-.465-.147-.66.147-.196.294-.759.958-.93 1.154-.171.196-.343.22-.637.073-.294-.147-1.243-.458-2.37-1.464-.877-.78-1.47-1.744-1.642-2.037-.171-.294-.018-.453.129-.6.132-.132.294-.343.441-.515.147-.171.196-.294.294-.49.098-.196.049-.367-.024-.515-.074-.147-.66-1.592-.906-2.181-.24-.578-.48-.5-.66-.51-.171-.008-.367-.01-.563-.01-.196 0-.514.073-.784.367-.269.294-1.028 1.003-1.028 2.447 0 1.444 1.053 2.839 1.2 3.034.147.196 2.072 3.165 5.022 4.44.702.304 1.25.485 1.678.621.705.224 1.346.193 1.854.117.566-.083 1.743-.71 1.988-1.396.244-.686.244-1.273.171-1.396-.073-.123-.269-.196-.563-.343z"/>
+        </svg>
       </div>
 
       {/* --- BOOKING RESERVATION GLASSMORPHISM CONTAINER (MODAL) --- */}
@@ -847,7 +847,7 @@ export default function App() {
           </button>
           
           <div className="booking-modal-header">
-            <span id="booking-badge-indicator" className="section-tag" style={{ fontSize: '0.7rem', marginBottom: '0.2rem' }}>Reserva Privada Segura</span>
+            <span id="booking-badge-indicator" className="section-tag" style={{ fontSize: '0.85rem', marginBottom: '0.2rem', fontWeight: 700 }}>Reserva Privada Segura</span>
             <h3 id="booking-service-title-modal" className="booking-modal-title">Pre-Agendar Sesión</h3>
             <p className="booking-modal-subtitle">
               Estás reservando: <strong style={{ color: 'var(--color-sage-dark)' }}>{selectedService?.title}</strong> ({selectedService?.price})

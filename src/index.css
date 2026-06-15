@@ -1,24 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
 
 /* --- CUSTOM VARIABLES --- */
 :root {
-  --color-cream-bg: #FAF9F6;
-  --color-cream-card: rgba(250, 249, 246, 0.5);
-  --color-sage: #8DA399;
-  --color-sage-light: #f0f4f2;
-  --color-sage-dark: #7a8e85;
-  --color-terracotta: #D99879;
-  --color-terracotta-light: #f9f0ec;
-  --color-terracotta-dark: #c68667;
-  --color-navy: #2C3E50;
-  --color-navy-light: #4A637C;
-  --color-white-glass: rgba(255, 255, 255, 0.4);
-  --color-white-glass-solid: rgba(255, 255, 255, 0.85);
-  --border-glass: rgba(255, 255, 255, 0.5);
-  --shadow-premium: 0 10px 40px -15px rgba(141, 163, 153, 0.2), 0 1px 3px rgba(141, 163, 153, 0.05);
-  --shadow-hover: 0 20px 50px -10px rgba(141, 163, 153, 0.3), 0 1px 8px rgba(141, 163, 153, 0.05);
+  --color-cream-bg: #F8F4EE; /* Marfil Fondo */
+  --color-cream-card: rgba(248, 244, 238, 0.55);
+  --color-sage: #8E7DBE; /* Lavanda - Secundario */
+  --color-sage-light: #F1EFF7;
+  --color-sage-dark: #6C5A9C;
+  --color-terracotta: #F28C7A; /* Coral Suave - Acento */
+  --color-terracotta-light: #FDF1EF;
+  --color-terracotta-dark: #D46A58;
+  --color-navy: #1F5A6E; /* Azul Petróleo - Principal */
+  --color-navy-light: #2F4E5A;
+  --color-dorado: #D8B36A; /* Dorado Champagne - Detalles */
+  --color-white-glass: rgba(248, 244, 238, 0.45);
+  --color-white-glass-solid: rgba(248, 244, 238, 0.9);
+  --border-glass: rgba(216, 179, 106, 0.25); /* Dorado Champagne border */
+  --shadow-premium: 0 10px 40px -15px rgba(31, 90, 110, 0.15), 0 1px 3px rgba(31, 90, 110, 0.03);
+  --shadow-hover: 0 20px 50px -10px rgba(31, 90, 110, 0.25), 0 1px 8px rgba(31, 90, 110, 0.03);
   --font-display: 'Playfair Display', serif;
-  --font-body: 'Inter', sans-serif;
+  --font-body: 'Montserrat', sans-serif;
   --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -215,8 +216,9 @@ ul {
   display: flex;
   align-items: center;
   position: relative;
-  background-image: radial-gradient(circle at 85% 20%, rgba(108, 142, 126, 0.08) 0%, transparent 40%),
-                    radial-gradient(circle at 15% 75%, rgba(211, 132, 107, 0.08) 0%, transparent 45%);
+  background-image: linear-gradient(to right, rgba(248, 244, 238, 0.96) 35%, rgba(248, 244, 238, 0.85) 70%, rgba(248, 244, 238, 0.5) 100%), url('/assets/psychology_office_bg.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 .hero-grid {
@@ -388,70 +390,28 @@ ul {
   right: 5%;
 }
 
-.hero-glass-visual {
+.hero-image-wrapper {
   width: 100%;
-  max-width: 420px;
-  aspect-ratio: 1;
-  border-radius: 32px;
-  background-color: var(--color-white-glass);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--border-glass);
+  max-width: 440px;
+  aspect-ratio: 4/5;
+  border-radius: 24px;
+  overflow: hidden;
   box-shadow: var(--shadow-premium);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 3rem;
-  position: relative;
+  border: 1px solid var(--color-dorado);
   z-index: 3;
+  position: relative;
+  transition: var(--transition-spring);
 }
 
-.hero-glass-visual svg {
-  width: 75%;
-  height: 75%;
+.hero-image-wrapper:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: var(--shadow-hover);
 }
 
-.hero-floating-stat {
-  position: absolute;
-  bottom: 8%;
-  left: -5%;
-  background-color: var(--color-white-glass-solid);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border-glass);
-  border-radius: 16px;
-  padding: 0.85rem 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  box-shadow: var(--shadow-premium);
-  z-index: 4;
-}
-
-.stat-icon {
-  width: 2.2rem;
-  height: 2.2rem;
-  border-radius: 50%;
-  background-color: var(--color-terracotta-light);
-  color: var(--color-terracotta);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.stat-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.stat-title {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--color-navy);
-}
-
-.stat-sub {
-  font-size: 0.75rem;
-  color: var(--color-navy-light);
+.hero-main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* --- PULSING FLOATING ACTION BUTTON (CTA IN HEADER/FLOATING) --- */
@@ -501,12 +461,12 @@ section {
 }
 
 .section-tag {
-  color: var(--color-terracotta);
+  color: var(--color-terracotta-dark);
   text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
   display: block;
 }
 
@@ -527,6 +487,47 @@ section {
 .refugio {
   background-color: var(--color-terracotta-light);
   background-image: radial-gradient(circle at 10% 20%, rgba(141, 163, 153, 0.05) 0%, transparent 35%);
+  padding-bottom: 3.5rem; /* Reduced whitespace */
+}
+
+.refugio-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  margin-bottom: 3.5rem;
+}
+
+.refugio-header-container .section-head {
+  margin-bottom: 0;
+  max-width: 680px;
+}
+
+.refugio-header-visual {
+  flex-shrink: 0;
+  width: 320px;
+  height: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-premium);
+  border: 2px solid var(--color-dorado);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  transition: var(--transition-spring);
+  z-index: 2;
+}
+
+.refugio-header-visual:hover {
+  transform: scale(1.05) rotate(3deg);
+  box-shadow: var(--shadow-hover);
+}
+
+.refugio-header-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .refugio-grid {
@@ -707,12 +708,16 @@ section {
 /* --- SECCIÓN SERVICIOS Y PRECIOS --- */
 .servicios {
   background-image: radial-gradient(circle at 80% 80%, rgba(211, 132, 107, 0.05) 0%, transparent 35%);
+  padding-top: 3.5rem; /* Reduced whitespace */
 }
 
 .services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 /* Glassmorphism Cards */
@@ -722,14 +727,25 @@ section {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-glass);
   border-radius: 2rem;
-  padding: 2.25rem;
+  padding: 1.5rem;
   box-shadow: var(--shadow-premium);
   display: flex;
   flex-direction: column;
-  height: 100%;
+  width: calc(33.333% - 1.5rem);
+  min-width: 300px;
+  max-width: 340px;
+  min-height: 360px; /* Closer to a square shape */
   transition: var(--transition-spring);
   position: relative;
   overflow: hidden;
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .service-card {
+    width: calc(50% - 1.25rem);
+    max-width: 380px;
+    min-height: 360px;
+  }
 }
 
 .service-card::before {
@@ -795,7 +811,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .service-card:nth-child(2) .service-icon-heading {
@@ -809,16 +825,16 @@ section {
 }
 
 .service-title {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--color-navy);
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .service-description {
   color: var(--color-navy-light);
-  font-size: 0.95rem;
-  margin-bottom: 1.5rem;
+  font-size: 0.88rem;
+  margin-bottom: 1rem;
   flex-grow: 1;
 }
 
@@ -833,8 +849,8 @@ section {
 .service-features-list {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
-  margin-bottom: 2rem;
+  gap: 0.45rem;
+  margin-bottom: 1.25rem;
 }
 
 .service-feature-item {
@@ -859,12 +875,12 @@ section {
 
 .service-meta-session {
   border-top: 1px solid rgba(28, 45, 60, 0.05);
-  padding-top: 1.25rem;
+  padding-top: 0.75rem;
   margin-top: auto;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  margin-bottom: 1.5rem;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
 }
 
 .service-duration-label {
@@ -1028,37 +1044,38 @@ section {
 }
 
 .contacto-layout {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 4.5rem;
-}
-
-.contacto-info {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  align-items: center;
+  width: 100%;
 }
 
-.contacto-para {
-  color: var(--color-navy-light);
-  font-size: 1.05rem;
+.contact-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  margin-top: 2.5rem;
 }
 
-.contact-card-direct {
+.contact-direct-card {
   background-color: var(--color-white-glass-solid);
   border: 1px solid var(--border-glass);
   box-shadow: var(--shadow-premium);
   border-radius: 20px;
-  padding: 1.75rem;
+  padding: 2.25rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  transition: var(--transition-spring);
 }
 
-.contact-direct-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.contact-direct-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  background-color: #ffffff;
 }
 
 .contact-direct-icon {
@@ -1071,11 +1088,7 @@ section {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-}
-
-.contact-direct-text {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 0.25rem;
 }
 
 .contact-direct-label {
@@ -1090,6 +1103,35 @@ section {
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--color-navy);
+}
+
+@media (max-width: 1100px) and (min-width: 769px) {
+  .contact-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 2rem auto 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    max-width: 400px;
+    margin: 2rem auto 0 auto;
+  }
+}
+
+.contact-direct-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contact-direct-text {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Glassmorphism Form container */
@@ -1223,7 +1265,10 @@ section {
 /* --- SECCIÓN CIERRE & CTA FINAL --- */
 .final-cta {
   background-color: var(--color-terracotta-light);
-  background-image: radial-gradient(circle at 50% 50%, rgba(217, 152, 121, 0.06) 0%, transparent 50%);
+  background-image: linear-gradient(to bottom, rgba(248, 244, 238, 0.82), rgba(248, 244, 238, 0.82)), url('/assets/cozy_therapy_office_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Parallax effect */
   text-align: center;
   padding: 8rem 0;
 }
@@ -1495,10 +1540,17 @@ section {
     padding-bottom: 0.5rem;
   }
 
-  .hero-floating-stat {
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -2rem;
+  .refugio-header-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .refugio-header-visual {
+    width: 260px;
+    height: 160px;
+    border-radius: 12px;
   }
 
   .refugio-grid {
@@ -1512,8 +1564,16 @@ section {
   }
 
   .services-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .service-card {
+    width: 100%;
+    max-width: 360px;
+    min-height: auto;
   }
 
   .faq-layout {
@@ -1549,21 +1609,23 @@ section {
 }
 
 @media (max-width: 768px) {
-  /* Navigation Overlay when opened */
+  /* Floating Dropdown Card for Mobile Navigation */
   .navigation {
-    position: fixed;
-    top: 4.5rem;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--color-cream-bg);
+    position: absolute;
+    top: 4.85rem;
+    left: 1.25rem;
+    right: 1.25rem;
+    background-color: #F8F4EE; /* Solid cream background */
+    border: 2px solid var(--color-dorado); /* Premium gold border */
+    border-radius: 20px;
+    box-shadow: 0 20px 45px rgba(31, 90, 110, 0.3);
     flex-direction: column;
-    padding: 3rem 2rem;
-    gap: 2rem;
-    transform: translateY(-100%);
+    padding: 2rem 1.5rem;
+    gap: 1rem;
+    transform: translateY(-20px);
     opacity: 0;
     pointer-events: none;
-    transition: var(--transition-smooth);
+    transition: var(--transition-spring);
     z-index: 990;
   }
 
@@ -1571,6 +1633,36 @@ section {
     transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
+  }
+
+  .navigation .nav-link {
+    width: 100%;
+    padding: 0.85rem 1.25rem;
+    background-color: rgba(255, 255, 255, 0.85); /* Solid white inside box */
+    border: 1px solid rgba(31, 90, 110, 0.1);
+    border-radius: 12px;
+    text-align: center;
+    color: var(--color-navy);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+    display: block;
+  }
+
+  .navigation .nav-link:hover,
+  .navigation .nav-link.active {
+    background-color: var(--color-sage-light);
+    color: var(--color-navy);
+    border-color: var(--color-sage);
+  }
+
+  /* Make header btn inside the mobile menu look balanced */
+  .navigation .btn-premium {
+    width: 100%;
+    padding: 0.85rem 1.25rem;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 0.95rem;
   }
 
   .menu-toggle {
@@ -1582,3 +1674,124 @@ section {
     gap: 1.25rem;
   }
 }
+
+/* --- FLOATING WHATSAPP BUTTON --- */
+.floating-cta-trigger.whatsapp-floating {
+  background-color: #25D366;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+}
+.floating-cta-trigger.whatsapp-floating:hover {
+  background-color: #128C7E;
+  transform: scale(1.1) rotate(5deg);
+}
+.pulsing-wave.whatsapp-pulse {
+  background-color: #25D366;
+}
+
+/* --- BENTO GRID SYSTEM --- */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.bento-card {
+  background-color: var(--color-white-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  border-radius: 24px;
+  padding: 2.25rem;
+  box-shadow: var(--shadow-premium);
+  transition: var(--transition-spring);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.bento-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.bento-card-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  margin-bottom: 0.75rem;
+}
+
+.bento-card-p {
+  color: var(--color-navy-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Specific Bento Cards */
+.bento-photo-card {
+  grid-column: span 4;
+  grid-row: span 2;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--color-dorado);
+}
+
+.bento-photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.bento-bio-card {
+  grid-column: span 8;
+  gap: 1rem;
+}
+
+.bento-approach-card {
+  grid-column: span 4;
+  gap: 1.25rem;
+}
+
+.bento-expect-card {
+  grid-column: span 4;
+  gap: 1rem;
+}
+
+/* Responsive Bento Grid */
+@media (max-width: 1024px) {
+  .bento-photo-card {
+    grid-column: span 12;
+    grid-row: span 1;
+  }
+  .bento-bio-card {
+    grid-column: span 12;
+  }
+  .bento-approach-card {
+    grid-column: span 12;
+  }
+  .bento-expect-card {
+    grid-column: span 12;
+  }
+}
+
+@media (max-width: 768px) {
+  .bento-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .bento-photo-card, .bento-bio-card, .bento-approach-card, .bento-expect-card {
+    grid-column: span 12;
+    grid-row: span 1;
+    width: 100%;
+  }
+}
+
