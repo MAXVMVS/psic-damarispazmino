@@ -179,7 +179,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               className={`nav-link ${activeTab === 'refugio' ? 'active' : ''}`} 
               onClick={(e) => { e.preventDefault(); handleScrollTo('refugio'); }}
             >
-              Tu lugar seguro (Sobre Mí)
+              Tu lugar seguro
             </a>
             <a 
               id="nav-servicios"
