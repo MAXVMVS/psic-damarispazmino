@@ -278,7 +278,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
         </div>
       </section>
 
-      {/* 3. SECCIÓN EL REFUGIO (SOBRE MÍ Y ENFOQUE TCC/NEUROPSICOLÓGICO) */}
+      {/* 3. SECCIÓN TU LUGAR SEGURO (SOBRE MÍ Y ENFOQUE TCC/NEUROPSICOLÓGICO) */}
       <section id="refugio" className="refugio">
         <div className="container">
           <div className="refugio-header-container">
@@ -779,7 +779,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <span className="footer-col-title">Atajos rápidos</span>
               <ul className="footer-links-list">
                 <li><a href="#inicio" className="footer-link" onClick={(e) => { e.preventDefault(); handleScrollTo('inicio'); }}>Inicio</a></li>
-                <li><a href="#refugio" className="footer-link" onClick={(e) => { e.preventDefault(); handleScrollTo('refugio'); }}>El Refugio</a></li>
+                <li><a href="#refugio" className="footer-link" onClick={(e) => { e.preventDefault(); handleScrollTo('refugio'); }}>Tu lugar seguro</a></li>
                 <li><a href="#servicios" className="footer-link" onClick={(e) => { e.preventDefault(); handleScrollTo('servicios'); }}>Servicios</a></li>
                 <li><a href="#faq" className="footer-link" onClick={(e) => { e.preventDefault(); handleScrollTo('faq'); }}>Preguntas</a></li>
                 <li><a href="#contacto" className="footer-link" onClick={(e) => { e.preventDefault(); handleScrollTo('contacto'); }}>Contacto</a></li>
