@@ -25,30 +25,11 @@ import {
 function PsychologyLogo({ className = "" }: { className?: string }) {
   return (
     <div className={`logo-icon-container ${className}`}>
-      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%', overflow: 'visible' }}>
-        {/* Overlapping soft premium circles */}
-        {/* Upper-Center Sage Circle */}
-        <circle cx="50" cy="38" r="23" fill="#6C8E7E" opacity="0.88" />
-        {/* Left Terracotta Circle */}
-        <circle cx="34" cy="52" r="21" fill="#D3846B" opacity="0.88" />
-        {/* Right Navy Circle */}
-        <circle cx="66" cy="52" r="21" fill="#1C2D3C" opacity="0.85" />
-
-        {/* Organic elegant black line art overlaying (Symmetric psychology PSI-butterfly representation) */}
-        {/* Central stem */}
-        <path d="M50,78 Q50,60 50,56" stroke="#FAF6F0" strokeWidth="2.5" strokeLinecap="round" />
-        <path d="M50,78 Q50,60 50,56" stroke="#1C2D3C" strokeWidth="2.0" strokeLinecap="round" />
-        
-        {/* Left lower wing loop */}
-        <path d="M50,58 C45,58 31,56 31,64 C31,72 44,72 50,58" stroke="#1C2D3C" strokeWidth="2.0" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        {/* Right lower wing loop */}
-        <path d="M50,58 C55,58 69,56 69,64 C69,72 56,72 50,58" stroke="#1C2D3C" strokeWidth="2.0" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-
-        {/* Left upper wing loop */}
-        <path d="M50,56 C41,47 28,29 39,29 C49,29 50,47 50,56" stroke="#1C2D3C" strokeWidth="2.0" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        {/* Right upper wing loop */}
-        <path d="M50,56 C59,47 72,29 61,29 C51,29 50,47 50,56" stroke="#1C2D3C" strokeWidth="2.0" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      </svg>
+      <img 
+        src="/assets/logo_web_header.png" 
+        alt="Psic. Damaris Pazmiño Logo" 
+        style={{ width: '100%', height: '100%', objectFit: 'contain' }} 
+      />
     </div>
   );
 }
@@ -781,7 +762,14 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
         <div className="container">
           <div className="footer-top">
             <div className="footer-brand">
-              <span id="footer-branding-title" className="footer-logo-title">Psic. Damaris <span>Pazmiño</span></span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <img 
+                  src="/assets/logo_blanco.png" 
+                  alt="Psic. Damaris Pazmiño Logo" 
+                  style={{ height: '2.5rem', width: 'auto', objectFit: 'contain' }} 
+                />
+                <span id="footer-branding-title" className="footer-logo-title">Psic. Damaris <span>Pazmiño</span></span>
+              </div>
               <p className="footer-desc">
                 Acompañando a adolescentes y jóvenes adultos en el camino del autoconocimiento, la autovaloración constructiva y la regulación afectiva guiada por la ciencia.
               </p>
