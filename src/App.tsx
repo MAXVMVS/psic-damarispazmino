@@ -46,6 +46,9 @@ export default function App() {
       ? `+593 ${whatsappNum.slice(1, 3)} ${whatsappNum.slice(3, 6)} ${whatsappNum.slice(6)}`
       : whatsappNum);
   const emailAddress = import.meta.env.VITE_EMAIL_ADDRESS || "psicdamarispazmino@gmail.com";
+  const displayPhone = whatsappNum.startsWith("593") && whatsappNum.length === 12
+    ? "0" + whatsappNum.slice(3)
+    : whatsappNum;
 
   /* --- STATE MANAGEMENT --- */
   const [scrolled, setScrolled] = useState(false);
@@ -711,7 +714,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               </div>
               <div className="contact-direct-text">
                 <span className="contact-direct-label">WhatsApp</span>
-                <span className="contact-direct-value">0984442648</span>
+                <span className="contact-direct-value">{displayPhone}</span>
               </div>
             </div>
 
