@@ -1063,7 +1063,7 @@ section {
   border: 1px solid var(--border-glass);
   box-shadow: var(--shadow-premium);
   border-radius: 20px;
-  padding: 2rem 1rem;
+  padding: 2rem 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1106,7 +1106,7 @@ section {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--color-navy);
-  word-break: break-all;
+  white-space: nowrap;
   width: 100%;
 }
 
@@ -1201,6 +1201,16 @@ section {
     gap: 1.25rem;
     max-width: 400px;
     margin: 2rem auto 0 auto;
+  }
+  .contact-direct-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    height: auto;
+    min-height: 85px;
+    padding: 1rem 1.25rem;
+    gap: 1.25rem;
   }
 }
 

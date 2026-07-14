@@ -709,8 +709,10 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <div className="contact-direct-icon">
                 <Phone size={20} />
               </div>
-              <span className="contact-direct-label">WhatsApp de Contacto</span>
-              <span className="contact-direct-value">0984442648</span>
+              <div className="contact-direct-text">
+                <span className="contact-direct-label">WhatsApp de Contacto</span>
+                <span className="contact-direct-value">0984442648</span>
+              </div>
             </div>
 
             <div 
@@ -721,8 +723,10 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <div className="contact-direct-icon">
                 <Instagram size={20} />
               </div>
-              <span className="contact-direct-label">Instagram</span>
-              <span className="contact-direct-value">@psic.damarispazmino</span>
+              <div className="contact-direct-text">
+                <span className="contact-direct-label">Instagram</span>
+                <span className="contact-direct-value">@psic.damarispazmino</span>
+              </div>
             </div>
 
             <div 
@@ -733,8 +737,10 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <div className="contact-direct-icon">
                 <Facebook size={20} />
               </div>
-              <span className="contact-direct-label">Facebook</span>
-              <span className="contact-direct-value">Psic. Damaris Pazmiño</span>
+              <div className="contact-direct-text">
+                <span className="contact-direct-label">Facebook</span>
+                <span className="contact-direct-value">Psic. Damaris Pazmiño</span>
+              </div>
             </div>
 
             <div 
@@ -745,8 +751,10 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <div className="contact-direct-icon">
                 <Mail size={20} />
               </div>
-              <span className="contact-direct-label">Correo Profesional</span>
-              <span className="contact-direct-value">{emailAddress}</span>
+              <div className="contact-direct-text">
+                <span className="contact-direct-label">Correo</span>
+                <span className="contact-direct-value">{emailAddress}</span>
+              </div>
             </div>
 
             <div 
@@ -757,8 +765,10 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <div className="contact-direct-icon">
                 <MapPin size={20} />
               </div>
-              <span className="contact-direct-label">Consultorio Físico</span>
-              <span className="contact-direct-value">Guayaquil, Ecuador</span>
+              <div className="contact-direct-text">
+                <span className="contact-direct-label">Consultorio Físico</span>
+                <span className="contact-direct-value">Guayaquil, Ecuador</span>
+              </div>
             </div>
           </div>
         </div>
