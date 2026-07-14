@@ -702,7 +702,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
 
           <div className="contact-cards-grid">
             <div 
-              className="contact-direct-card" 
+              className="contact-direct-card contact-brand-whatsapp" 
               onClick={handleFloatingWhatsappClick} 
               style={{ cursor: 'pointer' }}
             >
@@ -714,7 +714,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             </div>
 
             <div 
-              className="contact-direct-card"
+              className="contact-direct-card contact-brand-instagram"
               onClick={() => window.open("https://instagram.com/psic.damarispazmino", "_blank")}
               style={{ cursor: 'pointer' }}
             >
@@ -726,7 +726,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             </div>
 
             <div 
-              className="contact-direct-card"
+              className="contact-direct-card contact-brand-facebook"
               onClick={() => window.open("https://www.facebook.com/profile.php?id=61591817224441", "_blank")}
               style={{ cursor: 'pointer' }}
             >
@@ -738,7 +738,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             </div>
 
             <div 
-              className="contact-direct-card"
+              className="contact-direct-card contact-brand-email"
               onClick={() => window.open(`mailto:${emailAddress}`, "_blank")}
               style={{ cursor: 'pointer' }}
             >
@@ -750,7 +750,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             </div>
 
             <div 
-              className="contact-direct-card"
+              className="contact-direct-card contact-brand-maps"
               onClick={() => window.open("https://www.google.com/maps?q=Guayaquil", "_blank")}
               style={{ cursor: 'pointer' }}
             >

@@ -1110,6 +1110,57 @@ section {
   width: 100%;
 }
 
+/* --- BRAND CONTACT STYLES (WHATSAPP, INSTAGRAM, FACEBOOK, EMAIL, MAPS) --- */
+/* 1. WhatsApp */
+.contact-brand-whatsapp .contact-direct-icon {
+  background-color: rgba(37, 211, 102, 0.12);
+  color: #25D366;
+}
+.contact-brand-whatsapp:hover {
+  border-color: rgba(37, 211, 102, 0.5);
+  box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.2), var(--shadow-premium);
+}
+
+/* 2. Instagram */
+.contact-brand-instagram .contact-direct-icon {
+  background-color: rgba(225, 48, 108, 0.12);
+  color: #E1306C;
+}
+.contact-brand-instagram:hover {
+  border-color: rgba(225, 48, 108, 0.5);
+  box-shadow: 0 10px 25px -5px rgba(225, 48, 108, 0.2), var(--shadow-premium);
+}
+
+/* 3. Facebook */
+.contact-brand-facebook .contact-direct-icon {
+  background-color: rgba(24, 119, 242, 0.12);
+  color: #1877F2;
+}
+.contact-brand-facebook:hover {
+  border-color: rgba(24, 119, 242, 0.5);
+  box-shadow: 0 10px 25px -5px rgba(24, 119, 242, 0.2), var(--shadow-premium);
+}
+
+/* 4. Email */
+.contact-brand-email .contact-direct-icon {
+  background-color: rgba(234, 67, 53, 0.12);
+  color: #EA4335;
+}
+.contact-brand-email:hover {
+  border-color: rgba(234, 67, 53, 0.5);
+  box-shadow: 0 10px 25px -5px rgba(234, 67, 53, 0.2), var(--shadow-premium);
+}
+
+/* 5. Google Maps / Consultorio */
+.contact-brand-maps .contact-direct-icon {
+  background-color: rgba(194, 65, 12, 0.12);
+  color: var(--color-terracotta);
+}
+.contact-brand-maps:hover {
+  border-color: rgba(194, 65, 12, 0.5);
+  box-shadow: 0 10px 25px -5px rgba(194, 65, 12, 0.2), var(--shadow-premium);
+}
+
 @media (max-width: 1100px) and (min-width: 769px) {
   .contact-cards-grid {
     grid-template-columns: repeat(2, 1fr);
