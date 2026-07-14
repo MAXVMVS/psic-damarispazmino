@@ -38,13 +38,14 @@ function PsychologyLogo({ className = "" }: { className?: string }) {
 }
 
 export default function App() {
-  /* --- WHATSAPP CONFIG --- */
+  /* --- CONFIG --- */
   const whatsappNum = import.meta.env.VITE_WHATSAPP_NUMBER || "593983186044";
   const formattedWhatsapp = whatsappNum.startsWith("593") && whatsappNum.length === 12
     ? `+593 ${whatsappNum.slice(3, 5)} ${whatsappNum.slice(5, 8)} ${whatsappNum.slice(8)}`
     : (whatsappNum.startsWith("09") && whatsappNum.length === 10
       ? `+593 ${whatsappNum.slice(1, 3)} ${whatsappNum.slice(3, 6)} ${whatsappNum.slice(6)}`
       : whatsappNum);
+  const emailAddress = import.meta.env.VITE_EMAIL_ADDRESS || "psicdamarispazmino@gmail.com";
 
   /* --- STATE MANAGEMENT --- */
   const [scrolled, setScrolled] = useState(false);
@@ -738,14 +739,14 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
 
             <div 
               className="contact-direct-card"
-              onClick={() => window.open("mailto:consultas@damarispazmino.com", "_blank")}
+              onClick={() => window.open(`mailto:${emailAddress}`, "_blank")}
               style={{ cursor: 'pointer' }}
             >
               <div className="contact-direct-icon">
                 <Mail size={20} />
               </div>
               <span className="contact-direct-label">Correo Profesional</span>
-              <span className="contact-direct-value">consultas@damarispazmino.com</span>
+              <span className="contact-direct-value">{emailAddress}</span>
             </div>
 
             <div 
