@@ -710,7 +710,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
                 <Phone size={20} />
               </div>
               <div className="contact-direct-text">
-                <span className="contact-direct-label">WhatsApp de Contacto</span>
+                <span className="contact-direct-label">WhatsApp</span>
                 <span className="contact-direct-value">0984442648</span>
               </div>
             </div>
@@ -766,7 +766,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
                 <MapPin size={20} />
               </div>
               <div className="contact-direct-text">
-                <span className="contact-direct-label">Consultorio Físico</span>
+                <span className="contact-direct-label">Consultorio</span>
                 <span className="contact-direct-value">Guayaquil, Ecuador</span>
               </div>
             </div>
