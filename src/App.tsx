@@ -736,7 +736,11 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <span className="contact-direct-value">Psic. Damaris Pazmiño</span>
             </div>
 
-            <div className="contact-direct-card">
+            <div 
+              className="contact-direct-card"
+              onClick={() => window.open("mailto:consultas@damarispazmino.com", "_blank")}
+              style={{ cursor: 'pointer' }}
+            >
               <div className="contact-direct-icon">
                 <Mail size={20} />
               </div>
