@@ -18,7 +18,8 @@ import {
   Brain,
   ShieldCheck,
   CalendarCheck,
-  Palette
+  Palette,
+  Facebook
 } from 'lucide-react';
 import { db } from './firebase';
 import { collection, addDoc } from 'firebase/firestore';
@@ -721,6 +722,18 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               </div>
               <span className="contact-direct-label">Instagram</span>
               <span className="contact-direct-value">@psic.damarispazmino</span>
+            </div>
+
+            <div 
+              className="contact-direct-card"
+              onClick={() => window.open("https://www.facebook.com/profile.php?id=61591817224441", "_blank")}
+              style={{ cursor: 'pointer' }}
+            >
+              <div className="contact-direct-icon">
+                <Facebook size={20} />
+              </div>
+              <span className="contact-direct-label">Facebook</span>
+              <span className="contact-direct-value">Psic. Damaris Pazmiño</span>
             </div>
 
             <div className="contact-direct-card">
