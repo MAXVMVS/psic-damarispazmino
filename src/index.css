@@ -1112,53 +1112,78 @@ section {
 
 /* --- BRAND CONTACT STYLES (WHATSAPP, INSTAGRAM, FACEBOOK, EMAIL, MAPS) --- */
 /* 1. WhatsApp */
+.contact-brand-whatsapp {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.75), rgba(37, 211, 102, 0.04));
+  border-color: rgba(37, 211, 102, 0.15);
+}
 .contact-brand-whatsapp .contact-direct-icon {
-  background-color: rgba(37, 211, 102, 0.12);
-  color: #25D366;
+  background-color: #25D366;
+  color: #ffffff;
 }
 .contact-brand-whatsapp:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(37, 211, 102, 0.12));
   border-color: rgba(37, 211, 102, 0.5);
-  box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.2), var(--shadow-premium);
+  box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.25), var(--shadow-premium);
 }
 
 /* 2. Instagram */
+.contact-brand-instagram {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.75), rgba(225, 48, 108, 0.03), rgba(131, 58, 180, 0.03));
+  border-color: rgba(225, 48, 108, 0.15);
+}
 .contact-brand-instagram .contact-direct-icon {
-  background-color: rgba(225, 48, 108, 0.12);
-  color: #E1306C;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: #ffffff;
 }
 .contact-brand-instagram:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(225, 48, 108, 0.10), rgba(131, 58, 180, 0.10));
   border-color: rgba(225, 48, 108, 0.5);
-  box-shadow: 0 10px 25px -5px rgba(225, 48, 108, 0.2), var(--shadow-premium);
+  box-shadow: 0 10px 25px -5px rgba(225, 48, 108, 0.25), var(--shadow-premium);
 }
 
 /* 3. Facebook */
+.contact-brand-facebook {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.75), rgba(24, 119, 242, 0.04));
+  border-color: rgba(24, 119, 242, 0.15);
+}
 .contact-brand-facebook .contact-direct-icon {
-  background-color: rgba(24, 119, 242, 0.12);
-  color: #1877F2;
+  background-color: #1877F2;
+  color: #ffffff;
 }
 .contact-brand-facebook:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(24, 119, 242, 0.12));
   border-color: rgba(24, 119, 242, 0.5);
-  box-shadow: 0 10px 25px -5px rgba(24, 119, 242, 0.2), var(--shadow-premium);
+  box-shadow: 0 10px 25px -5px rgba(24, 119, 242, 0.25), var(--shadow-premium);
 }
 
 /* 4. Email */
+.contact-brand-email {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.75), rgba(234, 67, 53, 0.04));
+  border-color: rgba(234, 67, 53, 0.15);
+}
 .contact-brand-email .contact-direct-icon {
-  background-color: rgba(234, 67, 53, 0.12);
-  color: #EA4335;
+  background-color: #EA4335;
+  color: #ffffff;
 }
 .contact-brand-email:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(234, 67, 53, 0.12));
   border-color: rgba(234, 67, 53, 0.5);
-  box-shadow: 0 10px 25px -5px rgba(234, 67, 53, 0.2), var(--shadow-premium);
+  box-shadow: 0 10px 25px -5px rgba(234, 67, 53, 0.25), var(--shadow-premium);
 }
 
 /* 5. Google Maps / Consultorio */
+.contact-brand-maps {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.75), rgba(194, 65, 12, 0.04));
+  border-color: rgba(194, 65, 12, 0.15);
+}
 .contact-brand-maps .contact-direct-icon {
-  background-color: rgba(194, 65, 12, 0.12);
-  color: var(--color-terracotta);
+  background-color: var(--color-terracotta);
+  color: #ffffff;
 }
 .contact-brand-maps:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(194, 65, 12, 0.12));
   border-color: rgba(194, 65, 12, 0.5);
-  box-shadow: 0 10px 25px -5px rgba(194, 65, 12, 0.2), var(--shadow-premium);
+  box-shadow: 0 10px 25px -5px rgba(194, 65, 12, 0.25), var(--shadow-premium);
 }
 
 @media (max-width: 1100px) and (min-width: 769px) {
