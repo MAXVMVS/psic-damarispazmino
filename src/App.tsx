@@ -20,6 +20,8 @@ import {
   CalendarCheck,
   Palette
 } from 'lucide-react';
+import { db } from './firebase';
+import { collection, addDoc } from 'firebase/firestore';
 
 /* --- CUSTOM SPECIFIC PSYCHOLOGY LOGO COMPONENT --- */
 function PsychologyLogo({ className = "" }: { className?: string }) {
@@ -118,6 +120,22 @@ export default function App() {
     e.preventDefault();
     const formspreeId = import.meta.env.VITE_FORMSPREE_ID;
     const serviceText = selectedService ? `${selectedService.title} (${selectedService.price})` : "Consulta General";
+
+    // 0. Envío a Firebase Firestore
+    const bookingData = {
+      nombre: bookingName,
+      email: bookingEmail,
+      telefono: bookingPhone,
+      servicio: serviceText,
+      fecha: bookingDate,
+      hora: bookingTime,
+      tipo: 'Solicitud de Pre-Reserva',
+      createdAt: new Date().toISOString()
+    };
+
+    addDoc(collection(db, "bookings"), bookingData)
+      .then((docRef) => console.log("Pre-reserva guardada en Firestore con ID:", docRef.id))
+      .catch((err) => console.error("Error al guardar en Firestore:", err));
 
     // 1. Envío a Formspree en segundo plano
     if (formspreeId) {
