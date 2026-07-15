@@ -325,11 +325,11 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
 
             {/* Bento Card 2: Condensed Bio */}
             <div className="bento-card bento-bio-card">
-              <span className="section-tag" style={{ fontSize: '1.05rem', marginBottom: '0.25rem', fontWeight: 700 }}>Sobre mí</span>
-              <h3 className="bento-card-title" style={{ fontSize: '1.65rem', marginBottom: '1.5rem' }}>Hola, soy Damaris Pazmiño</h3>
-              
               <div className="bento-bio-grid">
                 <div className="bento-bio-col-narrative">
+                  <span className="section-tag" style={{ fontSize: '1.05rem', marginBottom: '0.25rem', fontWeight: 700 }}>Sobre mí</span>
+                  <h3 className="bento-card-title" style={{ fontSize: '1.65rem', marginBottom: '1.5rem', marginTop: 0 }}>Hola, soy Damaris Pazmiño</h3>
+                  
                   <p className="bento-card-p" style={{ fontWeight: 500, color: 'var(--color-navy)' }}>
                     Psicóloga y Neuropsicóloga Clínica, especialista en psicoterapia infanto-juvenil y adultos, y facilitadora de talleres de Arteterapia.
                   </p>
