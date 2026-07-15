@@ -355,7 +355,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
                 
                 <div className="bento-bio-col-credentials">
                   <span className="bento-credentials-title">
-                    <Award size={16} style={{ color: 'var(--color-dorado)', flexShrink: 0 }} />
+                    <Award size={16} style={{ color: 'var(--color-navy)', flexShrink: 0 }} />
                     Acreditación y Formación
                   </span>
                   <ul className="bento-credentials-list">
