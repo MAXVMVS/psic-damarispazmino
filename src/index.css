@@ -1419,8 +1419,9 @@ section {
 
 .footer-logo-img {
   height: 2.5rem;
-  width: auto;
+  width: 2.5rem;
   object-fit: contain;
+  display: block;
 }
 
 .footer-brand-text {
