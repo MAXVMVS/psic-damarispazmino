@@ -713,9 +713,9 @@ section {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -735,13 +735,6 @@ section {
   transition: var(--transition-spring);
   position: relative;
   overflow: hidden;
-}
-
-@media (max-width: 1100px) {
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 760px;
-  }
 }
 
 .service-card::before {
@@ -960,7 +953,8 @@ section {
   border: 1px solid rgba(28, 45, 60, 0.06);
   border-radius: 24px;
   padding: 2.25rem;
-  margin-top: 3rem;
+  margin: 3rem auto 0 auto;
+  max-width: 900px;
   position: relative;
   box-shadow: var(--shadow-subtle);
   transition: var(--transition-smooth);
