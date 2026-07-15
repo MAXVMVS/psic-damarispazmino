@@ -37,6 +37,14 @@ function PsychologyLogo({ className = "" }: { className?: string }) {
   );
 }
 
+/* --- SERVICES DEFINITION --- */
+const servicesList = [
+  { title: "Valoración Neuropsicológica Inicial", price: "USD $60", type: "Evaluación inicial" },
+  { title: "Evaluación Neuropsicológica Integral", price: "Personalizado (desde $150)", type: "Evaluación integral" },
+  { title: "Sesión Individual Online", price: "USD $25", type: "Cita Online" },
+  { title: "Sesión Presencial", price: "USD $35", type: "Cita Física" }
+];
+
 export default function App() {
   /* --- CONFIG --- */
   const whatsappNum = import.meta.env.VITE_WHATSAPP_NUMBER || "593983186044";
@@ -59,7 +67,8 @@ export default function App() {
   /* Contact Form state removed */
 
   /* Booking system state */
-  const [selectedService, setSelectedService] = useState<{title: string, price: string, type: string} | null>(null);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [bookingServiceTitle, setBookingServiceTitle] = useState('');
   const [bookingName, setBookingName] = useState('');
   const [bookingEmail, setBookingEmail] = useState('');
   const [bookingPhone, setBookingPhone] = useState('');
@@ -112,8 +121,9 @@ export default function App() {
     setMobileMenuOpen(false);
   };
 
-  const openBookingModal = (serviceName: string, price: string, type: string) => {
-    setSelectedService({ title: serviceName, price, type });
+  const openBookingModal = (serviceName?: string) => {
+    setBookingServiceTitle(serviceName || "");
+    setIsBookingModalOpen(true);
   };
 
   const handleFloatingWhatsappClick = () => {
@@ -129,7 +139,8 @@ export default function App() {
   const handleBookingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const formspreeId = import.meta.env.VITE_FORMSPREE_ID;
-    const serviceText = selectedService ? `${selectedService.title} (${selectedService.price})` : "Consulta General";
+    const currentService = servicesList.find(s => s.title === bookingServiceTitle);
+    const serviceText = currentService ? `${currentService.title} (${currentService.price})` : "Consulta de Orientación";
 
     // 0. Envío a Firebase Firestore
     const bookingData = {
@@ -179,10 +190,11 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
 
     triggerToast(
       "¡Solicitud de reserva recibida!",
-      `Tu sesión de "${selectedService?.title}" para el día ${bookingDate} ha sido enviada vía WhatsApp.`
+      `Tu pre-reserva para el día ${bookingDate} ha sido enviada vía WhatsApp.`
     );
     // Close modal & reset fields
-    setSelectedService(null);
+    setIsBookingModalOpen(false);
+    setBookingServiceTitle('');
     setBookingName('');
     setBookingEmail('');
     setBookingPhone('');
@@ -238,7 +250,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               id="header-cta-btn"
               className="btn-premium" 
               style={{ padding: '0.65rem 1.5rem', fontSize: '0.9rem' }}
-              onClick={() => openBookingModal("Asesoría General Primaria", "Variable", "Cita de Exploración")}
+              onClick={() => openBookingModal()}
             >
               Agendar Sesión
             </button>
@@ -277,7 +289,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <button 
                 id="hero-primary-cta"
                 className="btn-premium"
-                onClick={() => openBookingModal("Sesión Individual de Exploración", "USD $35", "Acompañamiento básico")}
+                onClick={() => openBookingModal()}
               >
                 Agendar una sesión <ArrowRight size={18} />
               </button>
@@ -493,7 +505,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <button 
                 id="service-cta-eval-inicial"
                 className="btn-premium service-cta-btn" 
-                onClick={() => openBookingModal("Valoración Neuropsicológica Inicial", "USD $60", "Evaluación inicial")}
+                onClick={() => openBookingModal("Valoración Neuropsicológica Inicial")}
               >
                 Reservar valoración
               </button>
@@ -537,7 +549,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <button 
                 id="service-cta-eval-integral"
                 className="btn-premium service-cta-btn" 
-                onClick={() => openBookingModal("Evaluación Neuropsicológica Integral", "Personalizado (desde $150)", "Evaluación integral")}
+                onClick={() => openBookingModal("Evaluación Neuropsicológica Integral")}
               >
                 Solicitar evaluación
               </button>
@@ -580,7 +592,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <button 
                 id="service-cta-online"
                 className="btn-premium service-cta-btn"
-                onClick={() => openBookingModal("Sesión Individual Online", "USD $25", "Cita Online")}
+                onClick={() => openBookingModal("Sesión Individual Online")}
               >
                 Agendar sesión online
               </button>
@@ -623,7 +635,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <button 
                 id="service-cta-presencial"
                 className="btn-premium service-cta-btn"
-                onClick={() => openBookingModal("Sesión Presencial", "USD $35", "Cita Física")}
+                onClick={() => openBookingModal("Sesión Presencial")}
               >
                 Agendar sesión presencial
               </button>
@@ -859,7 +871,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             id="final-cta-btn" 
             className="btn-premium" 
             style={{ marginTop: '1.25rem', backgroundColor: 'var(--color-navy)' }}
-            onClick={() => openBookingModal("Asesoría General Primaria", "Variable", "Orientación general")}
+            onClick={() => openBookingModal()}
           >
             Quiero agendar una sesión
           </button>
@@ -912,11 +924,11 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
       {/* --- BOOKING RESERVATION GLASSMORPHISM CONTAINER (MODAL) --- */}
       <div 
         id="booking-modal-overlay" 
-        className={`booking-modal-overlay ${selectedService ? 'opened' : ''}`}
-        onClick={(e) => { if(e.target === e.currentTarget) setSelectedService(null); }}
+        className={`booking-modal-overlay ${isBookingModalOpen ? 'opened' : ''}`}
+        onClick={(e) => { if(e.target === e.currentTarget) { setIsBookingModalOpen(false); setBookingServiceTitle(''); } }}
       >
         <div id="booking-modal-card-element" className="booking-modal-card">
-          <button id="close-booking-modal" className="booking-modal-close-btn" onClick={() => setSelectedService(null)}>
+          <button id="close-booking-modal" className="booking-modal-close-btn" onClick={() => { setIsBookingModalOpen(false); setBookingServiceTitle(''); }}>
             <X size={16} />
           </button>
           
@@ -924,12 +936,30 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             <span id="booking-badge-indicator" className="section-tag" style={{ fontSize: '0.85rem', marginBottom: '0.2rem', fontWeight: 700 }}>Reserva Privada Segura</span>
             <h3 id="booking-service-title-modal" className="booking-modal-title">Pre-Agendar Sesión</h3>
             <p className="booking-modal-subtitle">
-              Estás reservando: <strong style={{ color: 'var(--color-sage-dark)' }}>{selectedService?.title}</strong> ({selectedService?.price})
+              Completa tus datos y selecciona el servicio para tu consulta personalizada.
             </p>
           </div>
 
           <div id="booking-modal-content-area" className="booking-modal-body">
             <form id="booking-reservation-wizard-form" className="contact-form" onSubmit={handleBookingSubmit}>
+              <div className="form-field-group">
+                <label className="form-label" htmlFor="book-service">Servicio a consultar *</label>
+                <select 
+                  id="book-service" 
+                  className="form-input-control form-select-control" 
+                  required 
+                  value={bookingServiceTitle}
+                  onChange={(e) => setBookingServiceTitle(e.target.value)}
+                >
+                  <option value="">-- Selecciona un servicio --</option>
+                  {servicesList.map((service, index) => (
+                    <option key={index} value={service.title}>
+                      {service.title} ({service.price})
+                    </option>
+                  ))}
+                </select>
+              </div>
+
               <div className="form-field-group">
                 <label className="form-label" htmlFor="book-name">Tu nombre completo *</label>
                 <input 
