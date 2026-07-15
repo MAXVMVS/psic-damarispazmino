@@ -121,6 +121,11 @@ export default function App() {
     window.open(`https://wa.me/${whatsappNum}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
+  const handleArteterapiaWhatsappClick = () => {
+    const text = "Hola, Psic. Damaris. Me gustaría conocer las fechas disponibles para sus próximos talleres de arteterapia y reservar un cupo.";
+    window.open(`https://wa.me/${whatsappNum}?text=${encodeURIComponent(text)}`, '_blank');
+  };
+
   const handleBookingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const formspreeId = import.meta.env.VITE_FORMSPREE_ID;
@@ -416,19 +421,19 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               </div>
               <h3 className="service-title">Valoración Neuropsicológica Inicial</h3>
               <p className="service-description">
-                Primer encuentro para comprender el motivo de consulta, conocer antecedentes y estructurar el plan de evaluación.
+                Primer encuentro clínico para comprender el motivo de consulta, conocer los antecedentes relevantes y diseñar un plan de evaluación acorde a las necesidades del paciente.
               </p>
               
               <span className="service-includes-title">Incluye:</span>
               <ul className="service-features-list">
                 <li className="service-feature-item">
-                  <Check size={16} /> Entrevista clínica y observación.
+                  <Check size={16} /> Entrevista clínica y revisión de antecedentes.
                 </li>
                 <li className="service-feature-item">
-                  <Check size={16} /> Revisión de antecedentes.
+                  <Check size={16} /> Observación inicial y análisis del motivo de consulta.
                 </li>
                 <li className="service-feature-item">
-                  <Check size={16} /> Definición de objetivos de evaluación.
+                  <Check size={16} /> Plan de evaluación neuropsicológica personalizado.
                 </li>
               </ul>
 
@@ -458,19 +463,19 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               </div>
               <h3 className="service-title">Evaluación Neuropsicológica Integral</h3>
               <p className="service-description">
-                Estudio detallado del funcionamiento cognitivo, emocional y conductual para guiar una intervención personalizada.
+                Proceso de evaluación que permite conocer el perfil cognitivo, conductual y funcional del paciente para orientar la toma de decisiones clínicas y terapéuticas.
               </p>
               
               <span className="service-includes-title">Incluye:</span>
               <ul className="service-features-list">
                 <li className="service-feature-item">
-                  <Check size={16} /> Pruebas de memoria y atención.
+                  <Check size={16} /> Aplicación de pruebas neuropsicológicas estandarizadas.
                 </li>
                 <li className="service-feature-item">
-                  <Check size={16} /> Informe clínico con pautas recomendadas.
+                  <Check size={16} /> Análisis e interpretación integral de los resultados.
                 </li>
                 <li className="service-feature-item">
-                  <Check size={16} /> Sesión de devolución de resultados.
+                  <Check size={16} /> Informe neuropsicológico con devolución y recomendaciones.
                 </li>
               </ul>
 
@@ -587,13 +592,13 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <span className="service-includes-title">Incluye:</span>
               <ul className="service-features-list">
                 <li className="service-feature-item">
-                  <Check size={16} /> Todos los materiales artísticos.
+                  <Check size={16} /> Actividades artísticas con objetivos terapéuticos.
                 </li>
                 <li className="service-feature-item">
-                  <Check size={16} /> Sin necesidad de experiencia previa.
+                  <Check size={16} /> Desarrollo de habilidades emocionales, sociales y creativas.
                 </li>
                 <li className="service-feature-item">
-                  <Check size={16} /> Enfoque vivencial libre de juicios.
+                  <Check size={16} /> Material de apoyo y acompañamiento profesional durante el taller.
                 </li>
               </ul>
 
@@ -609,9 +614,9 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <button 
                 id="service-cta-arteterapia"
                 className="btn-premium service-cta-btn"
-                onClick={() => openBookingModal("Talleres de Arteterapia", "USD $35", "Taller Grupal")}
+                onClick={handleArteterapiaWhatsappClick}
               >
-                Reservar taller
+                Conoce las fechas y reserva
               </button>
             </div>
 
