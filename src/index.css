@@ -2168,9 +2168,9 @@ section {
   .bento-photo-card {
     grid-column: span 12;
     grid-row: span 1;
-    max-width: 280px;
+    max-width: 420px;
     width: 100%;
-    aspect-ratio: 1/1;
+    aspect-ratio: 4/5;
     margin: 0 auto;
   }
   .bento-bio-card {
@@ -2210,6 +2210,10 @@ section {
     width: 100%;
     max-width: 360px;
     min-height: auto;
+  }
+
+  .bento-photo-card {
+    max-width: 320px !important;
   }
 }
 
