@@ -339,6 +339,13 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <p className="bento-card-p">
                 Mi objetivo es acompañarte a superar cambios, desafíos emocionales o etapas de incertidumbre, combinando la calidez humana con el rigor científico para que afrontes la vida con mayor seguridad y confianza.
               </p>
+              
+              <div className="bento-bio-badge" style={{ marginTop: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.65rem', color: 'var(--color-sage-dark)', borderTop: '1px solid rgba(28,45,60,0.08)', paddingTop: '1rem' }}>
+                <Award size={18} style={{ flexShrink: 0 }} />
+                <span style={{ fontSize: '0.8rem', fontWeight: 600, lineHeight: 1.4 }}>
+                  Profesional habilitada para el ejercicio de la salud conforme a la normativa vigente.
+                </span>
+              </div>
             </div>
 
             {/* Bento Card 3: Therapeutic Approach */}
@@ -633,9 +640,9 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             <p id="faq-sub-lead" className="section-sub" style={{ marginTop: '1rem' }}>
               Entiendo que iniciar un proceso terapéutico puede generar incertidumbre. A continuación comparto respuestas a las inquietudes más comunes.
             </p>
-            <div style={{ marginTop: '2rem', display: 'flex', alignItems: 'flex-start', gap: '0.75rem', color: 'var(--color-sage-dark)' }}>
-              <Award size={20} style={{ flexShrink: 0, marginTop: '2px' }} />
-              <span style={{ fontSize: '0.9rem', fontWeight: 600 }}>Profesional habilitada para el ejercicio de la salud conforme a la normativa vigente</span>
+            <div style={{ marginTop: '2rem', display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--color-sage-dark)' }}>
+              <Award size={20} />
+              <span style={{ fontSize: '0.9rem', fontWeight: 600 }}>Miembro Avalado por Colegios Profesionales</span>
             </div>
           </div>
 
@@ -834,6 +841,9 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               </span>
             </div>
           </div>
+          <div className="footer-regulatory-note">
+            Profesional habilitada para el ejercicio de la salud conforme a la normativa vigente.
+          </div>
         </div>
       </footer>
 
@@ -955,6 +965,9 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               </button>
               <span style={{ fontSize: '0.75rem', color: 'var(--color-navy-light)', textAlign: 'center', display: 'block', marginTop: '0.5rem' }}>
                 Tu solicitud será respondida por WhatsApp o vía telefónica dentro de las próximas 24 horas laborables.
+              </span>
+              <span style={{ fontSize: '0.7rem', color: 'var(--color-sage-dark)', textAlign: 'center', display: 'block', marginTop: '0.75rem', borderTop: '1px solid rgba(28,45,60,0.06)', paddingTop: '0.5rem', fontWeight: 500 }}>
+                Profesional habilitada para el ejercicio de la salud conforme a la normativa vigente.
               </span>
             </form>
           </div>

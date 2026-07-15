@@ -1474,6 +1474,17 @@ section {
   color: var(--color-dorado);
 }
 
+.footer-regulatory-note {
+  text-align: center;
+  font-size: 0.78rem;
+  color: rgba(250, 246, 240, 0.35);
+  margin-top: 2rem;
+  border-top: 1px solid rgba(250, 246, 240, 0.08);
+  padding-top: 1.25rem;
+  width: 100%;
+  letter-spacing: 0.02em;
+}
+
 /* Booking Modal Glassmorphism */
 .booking-modal-overlay {
   position: fixed;
