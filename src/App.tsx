@@ -359,11 +359,9 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
                       <Check size={16} />
                       <span><strong>Diplomado</strong> en Terapia Cognitivo-Conductual (TCC).</span>
                     </li>
-                    <li className="bento-credential-item highlighted">
-                      <Sparkles size={16} />
-                      <span>
-                        <strong>Especialista en Psicoterapia Infanto-Juvenil</strong>.
-                      </span>
+                    <li className="bento-credential-item">
+                      <Check size={16} />
+                      <span><strong>Especialista en Psicoterapia Infanto-Juvenil</strong>.</span>
                     </li>
                   </ul>
                 </div>
