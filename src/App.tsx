@@ -543,7 +543,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <div className="service-icon-heading">
                 <MapPin size={24} />
               </div>
-              <h3 className="service-title">Sesión Presencial en Guayaquil</h3>
+              <h3 className="service-title">Sesión Presencial</h3>
               <p className="service-description">
                 Consulta individual en un consultorio físico cálido y seguro para trabajar de manera conjunta en tus metas.
               </p>
@@ -573,7 +573,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <button 
                 id="service-cta-presencial"
                 className="btn-premium service-cta-btn"
-                onClick={() => openBookingModal("Sesión Presencial en Guayaquil", "USD $35", "Cita Física")}
+                onClick={() => openBookingModal("Sesión Presencial", "USD $35", "Cita Física")}
               >
                 Agendar sesión presencial
               </button>
