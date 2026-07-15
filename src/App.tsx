@@ -801,7 +801,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
           </p>
           <p id="final-cta-lead" className="final-cta-sub-lead">Estoy aquí para acompañarte en ese proceso.</p>
           <span id="final-cta-sub-text" className="final-cta-p" style={{ fontSize: '1rem', fontWeight: 500 }}>
-            Agenda tu consulta y comienza a construir la versión más saludable de ti mismo.
+            Agenda tu consulta y comienza a construir la mejor versión de ti mismo, conmigo.
           </span>
           <button 
             id="final-cta-btn" 
