@@ -470,6 +470,9 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             
             {/* SERVICE CARD 1 */}
             <div id="service-card-eval-inicial" className="service-card">
+              <div className="service-card-watermark">
+                <img src="/assets/eval_inicial_bg.jpg" alt="" />
+              </div>
               <div className="service-card-header">
                 <div className="service-card-icon-wrapper">
                   <Brain size={20} />
@@ -513,6 +516,9 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
 
             {/* SERVICE CARD 2 (RECOMMENDED EVALUATION) */}
             <div id="service-card-eval-integral" className="service-card recommended">
+              <div className="service-card-watermark">
+                <img src="/assets/eval_integral_bg.jpg" alt="" />
+              </div>
               <span className="badge-recommended">Proceso Completo</span>
               <div className="service-card-header">
                 <div className="service-card-icon-wrapper">
@@ -557,6 +563,9 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
 
             {/* SERVICE CARD 3 */}
             <div id="service-card-online" className="service-card">
+              <div className="service-card-watermark">
+                <img src="/assets/sesion_online_bg.jpg" alt="" />
+              </div>
               <div className="service-card-header">
                 <div className="service-card-icon-wrapper">
                   <Video size={20} />
@@ -600,6 +609,9 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
 
             {/* SERVICE CARD 4 */}
             <div id="service-card-presencial" className="service-card">
+              <div className="service-card-watermark">
+                <img src="/assets/sesion_presencial_bg.jpg" alt="" />
+              </div>
               <div className="service-card-header">
                 <div className="service-card-icon-wrapper">
                   <MapPin size={20} />
