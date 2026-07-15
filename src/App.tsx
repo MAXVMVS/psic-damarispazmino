@@ -799,7 +799,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             id="final-cta-btn" 
             className="btn-premium" 
             style={{ marginTop: '1.25rem', backgroundColor: 'var(--color-navy)' }}
-            onClick={() => openBookingModal("Sesión Individual de Consejería", "USD $35 - $40", "Orientación general")}
+            onClick={() => openBookingModal("Asesoría General Primaria", "Variable", "Orientación general")}
           >
             Quiero agendar una sesión
           </button>
