@@ -361,7 +361,7 @@ ul {
   position: absolute;
   width: 110%;
   height: 110%;
-  background: radial-gradient(circle, rgba(141, 163, 153, 0.12) 0%, rgba(217, 152, 121, 0.08) 50%, transparent 70%);
+  background: radial-gradient(circle, rgba(242, 140, 122, 0.22) 0%, rgba(216, 179, 106, 0.18) 50%, transparent 70%);
   border-radius: 60% 40% 70% 30% / 60% 30% 70% 40%;
   animation: blob-bounce 20s infinite alternate ease-in-out;
   z-index: 1;
@@ -378,7 +378,7 @@ ul {
 .circle-decor-1 {
   width: 4rem;
   height: 4rem;
-  background-color: rgba(141, 163, 153, 0.15);
+  background-color: rgba(142, 125, 190, 0.25); /* var(--color-sage) */
   top: 10%;
   left: 5%;
 }
@@ -386,7 +386,7 @@ ul {
 .circle-decor-2 {
   width: 6rem;
   height: 6rem;
-  background-color: rgba(217, 152, 121, 0.15);
+  background-color: rgba(242, 140, 122, 0.25); /* var(--color-terracotta) */
   bottom: 10%;
   right: 5%;
 }
@@ -486,8 +486,7 @@ section {
 
 /* --- SECCIÓN EL REFUGIO (SOBRE MÍ Y ENFOQUE) --- */
 .refugio {
-  background-color: var(--color-terracotta-light);
-  background-image: radial-gradient(circle at 10% 20%, rgba(141, 163, 153, 0.05) 0%, transparent 35%);
+  background: linear-gradient(135deg, #FAE5E1 0%, #F5F1E9 100%);
   padding-bottom: 3.5rem; /* Reduced whitespace */
 }
 
@@ -708,7 +707,7 @@ section {
 
 /* --- SECCIÓN SERVICIOS Y PRECIOS --- */
 .servicios {
-  background-image: radial-gradient(circle at 80% 80%, rgba(211, 132, 107, 0.05) 0%, transparent 35%);
+  background: linear-gradient(180deg, var(--color-cream-bg) 0%, #F1EFF7 50%, var(--color-cream-bg) 100%);
   padding-top: 3.5rem; /* Reduced whitespace */
 }
 
@@ -1144,7 +1143,7 @@ section {
 
 /* --- SECCIÓN FAQ --- */
 .faq {
-  background-color: #FAF6F0;
+  background: linear-gradient(135deg, #F9F5EE 0%, #FAEBE7 100%);
 }
 
 .faq-layout {
@@ -1597,9 +1596,10 @@ section {
 
 /* --- FOOTER --- */
 .footer {
-  background-color: var(--color-navy);
+  background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-sage-dark) 60%, #174251 100%);
   color: #FAF6F0;
   padding: 3rem 0;
+  border-top: 2px solid var(--color-dorado);
 }
 
 .footer-minimalist-content {
