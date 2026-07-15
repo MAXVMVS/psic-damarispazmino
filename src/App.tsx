@@ -265,14 +265,14 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <Sparkles size={14} /> Espacio Seguro Integral
             </div>
             <h1 id="hero-main-heading" className="hero-title">
-              Acompañamiento psicológico profesional para tu bienestar y crecimiento.
+              Acompañamiento psicológico para tu bienestar y crecimiento.
             </h1>
             <div className="hero-description-container">
               <p id="hero-desc-lead" className="hero-paragraph-lead">
-                Te ofrezco un espacio seguro de escucha y orientación basado en la Terapia Cognitivo-Conductual y la Neuropsicología. Diseñemos juntos herramientas prácticas y científicas para superar la ansiedad, el estrés y construir el bienestar que mereces.
+                Un espacio seguro basado en Terapia Cognitivo-Conductual y Neuropsicología. Diseñemos juntos herramientas prácticas para superar el estrés y alcanzar tu bienestar.
               </p>
               <p id="hero-desc-cta" className="hero-paragraph-cta-text">
-                <Heart size={18} style={{ color: 'var(--color-terracotta)' }} /> Da el primer paso hacia tu bienestar hoy.
+                <Heart size={16} style={{ color: 'var(--color-terracotta)' }} /> Comienza tu proceso hoy.
               </p>
             </div>
             
