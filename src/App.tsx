@@ -632,50 +632,57 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               </button>
             </div>
 
-            {/* SERVICE CARD 5 */}
-            <div id="service-card-arteterapia" className="service-card">
-              <div className="service-card-header">
-                <div className="service-card-icon-wrapper">
-                  <Palette size={20} />
-                </div>
-              </div>
-              <h3 className="service-title">Talleres de Arteterapia</h3>
-              <p className="service-description">
-                Talleres vivenciales grupales que utilizan el arte como canal terapéutico de expresión y autoconocimiento.
-              </p>
-              
-              <span className="service-includes-title">Incluye:</span>
-              <ul className="service-features-list">
-                <li className="service-feature-item">
-                  <Check size={16} /> Actividades artísticas con objetivos terapéuticos.
-                </li>
-                <li className="service-feature-item">
-                  <Check size={16} /> Desarrollo de habilidades emocionales, sociales y creativas.
-                </li>
-                <li className="service-feature-item">
-                  <Check size={16} /> Material de apoyo y acompañamiento profesional durante el taller.
-                </li>
-              </ul>
-
-              <div className="service-meta-session">
-                <span className="service-duration-label">
-                  <Clock size={14} /> Duración: 3 horas
-                </span>
-                <span className="service-price-tag">
-                  USD $35 <span className="service-price-sub">/ participante</span>
-                </span>
-              </div>
-
-              <button 
-                id="service-cta-arteterapia"
-                className="btn-premium service-cta-btn"
-                onClick={handleArteterapiaWhatsappClick}
-              >
-                Conoce las fechas y reserva
-              </button>
             </div>
 
-          </div>
+            {/* SPECIAL SERVICE BANNER: TALLERES HORIZONTAL */}
+            <div id="service-card-arteterapia" className="service-card-horizontal">
+              <span className="badge-event">Eventos & Talleres</span>
+              <div className="service-horizontal-grid">
+                <div className="service-horizontal-info">
+                  <div className="service-card-header" style={{ marginBottom: '1rem' }}>
+                    <div className="service-card-icon-wrapper">
+                      <Palette size={20} />
+                    </div>
+                    <h3 className="service-title-horizontal">Talleres de Arteterapia</h3>
+                  </div>
+                  <p className="service-description-horizontal">
+                    Talleres vivenciales grupales que utilizan el arte como canal terapéutico de expresión y autoconocimiento, diseñados para conectar con tus emociones de forma creativa.
+                  </p>
+                  
+                  <div className="service-meta-session-horizontal">
+                    <span className="service-duration-label" style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.88rem', color: 'var(--color-navy-light)' }}>
+                      <Clock size={14} /> Duración: 3 horas
+                    </span>
+                    <span className="service-price-tag">
+                      USD $35 <span className="service-price-sub">/ participante</span>
+                    </span>
+                  </div>
+                </div>
+                
+                <div className="service-horizontal-inclusions">
+                  <span className="service-includes-title">¿Qué incluye?</span>
+                  <ul className="service-features-list">
+                    <li className="service-feature-item">
+                      <Check size={16} /> Actividades artísticas con objetivos terapéuticos dirigidos.
+                    </li>
+                    <li className="service-feature-item">
+                      <Check size={16} /> Desarrollo de habilidades emocionales, sociales y creativas.
+                    </li>
+                    <li className="service-feature-item">
+                      <Check size={16} /> Material de apoyo y acompañamiento profesional.
+                    </li>
+                  </ul>
+                  
+                  <button 
+                    id="service-cta-arteterapia"
+                    className="btn-premium service-cta-btn-horizontal"
+                    onClick={handleArteterapiaWhatsappClick}
+                  >
+                    Conoce las fechas y reserva
+                  </button>
+                </div>
+              </div>
+            </div>
         </div>
       </section>
 

@@ -958,6 +958,106 @@ section {
   box-shadow: none;
 }
 
+/* Horizontal Service Card styling */
+.service-card-horizontal {
+  background-color: var(--color-beige-card);
+  border: 1px solid rgba(28, 45, 60, 0.06);
+  border-radius: 24px;
+  padding: 2.25rem;
+  margin-top: 3rem;
+  position: relative;
+  box-shadow: var(--shadow-subtle);
+  transition: var(--transition-smooth);
+  overflow: hidden;
+}
+
+.service-card-horizontal:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(121, 137, 114, 0.25);
+}
+
+.badge-event {
+  position: absolute;
+  top: 1.5rem;
+  right: 2.25rem;
+  background-color: var(--color-sage-light);
+  color: var(--color-sage-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  border: 1px solid rgba(121, 137, 114, 0.2);
+}
+
+.service-horizontal-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.service-title-horizontal {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  margin-left: 1rem;
+}
+
+.service-description-horizontal {
+  color: var(--color-navy-light);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.service-meta-session-horizontal {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(28, 45, 60, 0.06);
+}
+
+.service-cta-btn-horizontal {
+  width: 100%;
+  margin-top: 1.5rem;
+  background-color: var(--color-sage-dark);
+}
+
+.service-cta-btn-horizontal:hover {
+  background-color: var(--color-navy);
+}
+
+@media (max-width: 900px) {
+  .service-card-horizontal {
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+  .badge-event {
+    position: static;
+    display: inline-block;
+    margin-bottom: 1.25rem;
+  }
+  .service-horizontal-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .service-meta-session-horizontal {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding-bottom: 1rem;
+  }
+  .service-title-horizontal {
+    font-size: 1.3rem;
+  }
+}
+
+
 .service-card:nth-child(2) .service-cta-btn.btn-premium {
   background-color: var(--color-sage);
   color: #ffffff;
