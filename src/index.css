@@ -802,26 +802,47 @@ section {
   box-shadow: 0 4px 10px rgba(211, 132, 107, 0.2);
 }
 
-.service-icon-heading {
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 16px;
-  background-color: var(--color-sage-light);
-  color: var(--color-sage-dark);
+.service-card-header {
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.service-card-icon-wrapper {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1rem auto;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(121, 137, 114, 0.15) 0%, rgba(121, 137, 114, 0.04) 100%);
+  border: 1px solid rgba(121, 137, 114, 0.25);
+  color: var(--color-sage-dark);
+  box-shadow: 0 4px 12px rgba(121, 137, 114, 0.05);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.service-card:nth-child(2) .service-icon-heading {
-  background-color: var(--color-terracotta-light);
+.service-card.recommended .service-card-icon-wrapper {
+  background: linear-gradient(135deg, rgba(211, 132, 107, 0.18) 0%, rgba(211, 132, 107, 0.05) 100%);
+  border: 1px solid rgba(211, 132, 107, 0.3);
   color: var(--color-terracotta);
+  box-shadow: 0 4px 12px rgba(211, 132, 107, 0.08);
 }
 
-.service-card:nth-child(3) .service-icon-heading {
-  background-color: #E6ECF5;
-  color: #2F588B;
+.service-card:hover .service-card-icon-wrapper {
+  transform: scale(1.08) rotate(4deg);
+  box-shadow: 0 8px 20px rgba(121, 137, 114, 0.12);
+  border-color: rgba(121, 137, 114, 0.4);
+}
+
+.service-card.recommended:hover .service-card-icon-wrapper {
+  box-shadow: 0 8px 20px rgba(211, 132, 107, 0.16);
+  border-color: rgba(211, 132, 107, 0.45);
+}
+
+.service-card-icon-wrapper svg {
+  stroke-width: 2px;
 }
 
 .service-title {
@@ -829,7 +850,7 @@ section {
   font-weight: 600;
   color: var(--color-navy);
   margin-bottom: 0.5rem;
-  text-align: center;
+  text-align: left;
 }
 
 .service-description {
@@ -837,7 +858,7 @@ section {
   font-size: 0.88rem;
   margin-bottom: 1rem;
   flex-grow: 1;
-  text-align: center;
+  text-align: left;
 }
 
 .service-includes-title {
