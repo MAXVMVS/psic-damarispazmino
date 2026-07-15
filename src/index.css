@@ -712,11 +712,10 @@ section {
 }
 
 .services-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -731,20 +730,17 @@ section {
   box-shadow: var(--shadow-premium);
   display: flex;
   flex-direction: column;
-  width: calc(33.333% - 1.5rem);
-  min-width: 300px;
-  max-width: 340px;
+  width: 100%;
   min-height: 360px; /* Closer to a square shape */
   transition: var(--transition-spring);
   position: relative;
   overflow: hidden;
 }
 
-@media (max-width: 1024px) and (min-width: 769px) {
-  .service-card {
-    width: calc(50% - 1.25rem);
-    max-width: 380px;
-    min-height: 360px;
+@media (max-width: 1100px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 760px;
   }
 }
 
