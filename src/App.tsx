@@ -809,51 +809,25 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
       {/* 8. FOOTER GENERAL */}
       <footer id="app-footer" className="footer">
         <div className="container">
-          <div className="footer-top">
-            <div className="footer-brand">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <img 
-                  src="/assets/logo_blanco.png" 
-                  alt="Psic. Damaris Pazmiño Logo" 
-                  style={{ height: '2.5rem', width: 'auto', objectFit: 'contain' }} 
-                />
+          <div className="footer-minimalist-content">
+            <div className="footer-brand-minimalist">
+              <img 
+                src="/assets/logo_blanco.png" 
+                alt="Psic. Damaris Pazmiño Logo" 
+                className="footer-logo-img"
+              />
+              <div className="footer-brand-text">
                 <span id="footer-branding-title" className="footer-logo-title">Psic. Damaris <span>Pazmiño</span></span>
-              </div>
-              <p className="footer-desc">
-                Acompañando a adolescentes y jóvenes adultos en el camino del autoconocimiento, la autovaloración constructiva y la regulación afectiva guiada por la ciencia.
-              </p>
-            </div>
-
-            <div id="footer-navigation-col" className="footer-links-col">
-              <span className="footer-col-title">Atajos rápidos</span>
-              <ul className="footer-links-list">
-                <li><a href="#inicio" className="footer-link" onClick={(e) => { e.preventDefault(); handleScrollTo('inicio'); }}>Inicio</a></li>
-                <li><a href="#refugio" className="footer-link" onClick={(e) => { e.preventDefault(); handleScrollTo('refugio'); }}>Tu lugar seguro</a></li>
-                <li><a href="#servicios" className="footer-link" onClick={(e) => { e.preventDefault(); handleScrollTo('servicios'); }}>Servicios</a></li>
-                <li><a href="#faq" className="footer-link" onClick={(e) => { e.preventDefault(); handleScrollTo('faq'); }}>Preguntas</a></li>
-                <li><a href="#contacto" className="footer-link" onClick={(e) => { e.preventDefault(); handleScrollTo('contacto'); }}>Contacto</a></li>
-              </ul>
-            </div>
-
-            <div id="footer-accreditations-col" className="footer-links-col">
-              <span className="footer-col-title">Acreditación e Información</span>
-              <div className="footer-extra-details">
-                <div className="footer-extra-item">
-                  <Check size={14} /> Psicóloga Clínica Registrada (MSP)
-                </div>
-                <div className="footer-extra-item">
-                  <Check size={14} /> Postgrado en Terapia Cognitivo-Conductual
-                </div>
-                <div className="footer-extra-item">
-                  <Check size={14} /> Abordaje avalado por Sociedad Ecuatoriana de Neuropsicología
-                </div>
+                <span className="footer-logo-subtitle">Psicología Clínica & Psicoterapia</span>
               </div>
             </div>
-          </div>
-
-          <div className="footer-bottom">
-            <span>&copy; {new Date().getFullYear()} Psic. Damaris Pazmiño. Todos los derechos reservados.</span>
-            <span>Desarrollo por MAX AI - Digital Studio.</span>
+            
+            <div className="footer-meta-minimalist">
+              <span>&copy; {new Date().getFullYear()} Psic. Damaris Pazmiño. Todos los derechos reservados.</span>
+              <span className="footer-studio-attribution">
+                Desarrollo por <a href="https://maxai.studio" target="_blank" rel="noopener noreferrer">MAX AI - Digital Studio</a>.
+              </span>
+            </div>
           </div>
         </div>
       </footer>
