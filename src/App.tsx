@@ -461,9 +461,6 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             
             {/* SERVICE CARD 1 */}
             <div id="service-card-eval-inicial" className="service-card">
-              <div className="service-icon-heading">
-                <Brain size={24} />
-              </div>
               <h3 className="service-title">Valoración Neuropsicológica Inicial</h3>
               <p className="service-description">
                 Primer encuentro clínico para comprender el motivo de consulta, conocer los antecedentes relevantes y diseñar un plan de evaluación acorde a las necesidades del paciente.
@@ -503,9 +500,6 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             {/* SERVICE CARD 2 (RECOMMENDED EVALUATION) */}
             <div id="service-card-eval-integral" className="service-card recommended">
               <span className="badge-recommended">Proceso Completo</span>
-              <div className="service-icon-heading">
-                <Brain size={24} style={{ color: 'var(--color-terracotta)' }} />
-              </div>
               <h3 className="service-title">Evaluación Neuropsicológica Integral</h3>
               <p className="service-description">
                 Proceso de evaluación que permite conocer el perfil cognitivo, conductual y funcional del paciente para orientar la toma de decisiones clínicas y terapéuticas.
@@ -544,9 +538,6 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
 
             {/* SERVICE CARD 3 */}
             <div id="service-card-online" className="service-card">
-              <div className="service-icon-heading">
-                <Video size={24} />
-              </div>
               <h3 className="service-title">Sesión Individual Online</h3>
               <p className="service-description">
                 Acompañamiento terapéutico confidencial en modalidad virtual, ideal para tratar ansiedad, estrés y autoestima.
@@ -585,9 +576,6 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
 
             {/* SERVICE CARD 4 */}
             <div id="service-card-presencial" className="service-card">
-              <div className="service-icon-heading">
-                <MapPin size={24} />
-              </div>
               <h3 className="service-title">Sesión Presencial</h3>
               <p className="service-description">
                 Consulta individual en un consultorio físico cálido y seguro para trabajar de manera conjunta en tus metas.
@@ -626,9 +614,6 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
 
             {/* SERVICE CARD 5 */}
             <div id="service-card-arteterapia" className="service-card">
-              <div className="service-icon-heading">
-                <Palette size={24} />
-              </div>
               <h3 className="service-title">Talleres de Arteterapia</h3>
               <p className="service-description">
                 Talleres vivenciales grupales que utilizan el arte como canal terapéutico de expresión y autoconocimiento.
