@@ -1867,6 +1867,86 @@ section {
   gap: 1rem;
 }
 
+/* Bento Bio Grid Layout & Credentials */
+.bento-bio-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+.bento-bio-col-narrative {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.bento-bio-col-credentials {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 16px;
+  padding: 1.25rem;
+  border: 1px solid rgba(28, 45, 60, 0.05);
+}
+
+.bento-credentials-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(28, 45, 60, 0.1);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.bento-credentials-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bento-credential-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  color: var(--color-navy-light);
+  line-height: 1.45;
+}
+
+.bento-credential-item svg {
+  color: var(--color-sage);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.bento-credential-item.highlighted {
+  border: 1px solid rgba(211, 132, 107, 0.25);
+  background-color: rgba(211, 132, 107, 0.06);
+  padding: 0.6rem 0.85rem;
+  border-radius: 12px;
+  color: var(--color-navy);
+}
+
+.bento-credential-item.highlighted svg {
+  color: var(--color-terracotta);
+}
+
+@media (max-width: 900px) {
+  .bento-bio-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+
 .bento-approach-card {
   grid-column: span 4;
   gap: 1.25rem;

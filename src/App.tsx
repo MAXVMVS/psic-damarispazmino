@@ -329,16 +329,45 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             {/* Bento Card 2: Condensed Bio */}
             <div className="bento-card bento-bio-card">
               <span className="section-tag" style={{ fontSize: '1.05rem', marginBottom: '0.25rem', fontWeight: 700 }}>Sobre mí</span>
-              <h3 className="bento-card-title" style={{ fontSize: '1.65rem' }}>Hola, soy Damaris Pazmiño</h3>
-              <p className="bento-card-p" style={{ fontWeight: 500, color: 'var(--color-navy)' }}>
-                Psicóloga y Neuropsicóloga Clínica, especialista en psicoterapia infanto-juvenil y adultos, y facilitadora de talleres de Arteterapia.
-              </p>
-              <p className="bento-card-p">
-                Ofrezco un espacio seguro y profesional para comprender tus emociones, fortalecer tus recursos personales y desarrollar estrategias prácticas basadas en evidencia científica.
-              </p>
-              <p className="bento-card-p">
-                Mi objetivo es acompañarte a superar cambios, desafíos emocionales o etapas de incertidumbre, combinando la calidez humana con el rigor científico para que afrontes la vida con mayor seguridad y confianza.
-              </p>
+              <h3 className="bento-card-title" style={{ fontSize: '1.65rem', marginBottom: '1.5rem' }}>Hola, soy Damaris Pazmiño</h3>
+              
+              <div className="bento-bio-grid">
+                <div className="bento-bio-col-narrative">
+                  <p className="bento-card-p" style={{ fontWeight: 500, color: 'var(--color-navy)' }}>
+                    Psicóloga y Neuropsicóloga Clínica, especialista en psicoterapia infanto-juvenil y adultos, y facilitadora de talleres de Arteterapia.
+                  </p>
+                  <p className="bento-card-p">
+                    Ofrezco un espacio seguro y profesional para comprender tus emociones, fortalecer tus recursos personales y desarrollar estrategias prácticas basadas en evidencia científica.
+                  </p>
+                  <p className="bento-card-p">
+                    Mi objetivo es acompañarte a superar cambios, desafíos emocionales o etapas de incertidumbre, combinando la calidez humana con el rigor científico para que afrontes la vida con mayor seguridad y confianza.
+                  </p>
+                </div>
+                
+                <div className="bento-bio-col-credentials">
+                  <span className="bento-credentials-title">Acreditación y Formación</span>
+                  <ul className="bento-credentials-list">
+                    <li className="bento-credential-item">
+                      <Check size={16} />
+                      <span><strong>Psicóloga Clínica</strong> registrada en el SENESCYT.</span>
+                    </li>
+                    <li className="bento-credential-item">
+                      <Check size={16} />
+                      <span><strong>Máster en Neuropsicología Clínica</strong> por la Universidad Internacional de Valencia (VIU).</span>
+                    </li>
+                    <li className="bento-credential-item">
+                      <Check size={16} />
+                      <span><strong>Diplomado</strong> en Terapia Cognitivo-Conductual (TCC).</span>
+                    </li>
+                    <li className="bento-credential-item highlighted">
+                      <Sparkles size={16} />
+                      <span>
+                        <strong>Especialización en curso</strong> como Psicoterapeuta Infanto-Juvenil <em>(culmina en octubre de este año)</em>.
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
               
               <div className="bento-bio-badge" style={{ marginTop: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.65rem', color: 'var(--color-sage-dark)', borderTop: '1px solid rgba(28,45,60,0.08)', paddingTop: '1rem' }}>
                 <Award size={18} style={{ flexShrink: 0 }} />
