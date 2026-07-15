@@ -1812,6 +1812,12 @@ section {
     align-items: center;
   }
 
+  .hero-image-wrapper {
+    aspect-ratio: 16/10; /* Horizontal layout for tablet/mobile */
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
   .hero-paragraph-lead {
     border-left: none;
     border-bottom: 2px solid var(--color-terracotta);
