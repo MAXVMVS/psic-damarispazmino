@@ -640,10 +640,6 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             <p id="faq-sub-lead" className="section-sub" style={{ marginTop: '1rem' }}>
               Entiendo que iniciar un proceso terapéutico puede generar incertidumbre. A continuación comparto respuestas a las inquietudes más comunes.
             </p>
-            <div style={{ marginTop: '2rem', display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--color-sage-dark)' }}>
-              <Award size={20} />
-              <span style={{ fontSize: '0.9rem', fontWeight: 600 }}>Miembro Avalado por Colegios Profesionales</span>
-            </div>
           </div>
 
           <div id="faq-accordion-group" className="faq-list-container">
