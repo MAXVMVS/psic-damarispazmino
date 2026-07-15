@@ -760,6 +760,42 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
                 </div>
               </div>
             </div>
+
+            {/* FAQ ITEM 4 */}
+            <div className={`faq-accordion-item ${openFaq === 4 ? 'opened' : ''}`}>
+              <button 
+                className="faq-accordion-header" 
+                onClick={() => setOpenFaq(openFaq === 4 ? null : 4)}
+              >
+                <span className="faq-accordion-question">¿Con qué frecuencia debo asistir a las sesiones y cuánto dura el proceso?</span>
+                <div className="faq-accordion-icon-box">
+                  <ChevronDown size={14} />
+                </div>
+              </button>
+              <div className="faq-accordion-content-panel" style={{ maxHeight: openFaq === 4 ? '300px' : '0px' }}>
+                <div className="faq-accordion-content-inner">
+                  Al principio, la frecuencia ideal suele ser semanal para establecer el vínculo terapéutico y trabajar en las primeras herramientas. Conforme avanzas y logras tus objetivos, las sesiones se distancian de forma quincenal o mensual. La duración total del proceso varía según el caso particular de cada persona.
+                </div>
+              </div>
+            </div>
+
+            {/* FAQ ITEM 5 */}
+            <div className={`faq-accordion-item ${openFaq === 5 ? 'opened' : ''}`}>
+              <button 
+                className="faq-accordion-header" 
+                onClick={() => setOpenFaq(openFaq === 5 ? null : 5)}
+              >
+                <span className="faq-accordion-question">¿Qué es una valoración neuropsicológica y cuándo se recomienda?</span>
+                <div className="faq-accordion-icon-box">
+                  <ChevronDown size={14} />
+                </div>
+              </button>
+              <div className="faq-accordion-content-panel" style={{ maxHeight: openFaq === 5 ? '300px' : '0px' }}>
+                <div className="faq-accordion-content-inner">
+                  Es un estudio detallado de las funciones cognitivas (como la atención, memoria, concentración y lenguaje). Se recomienda cuando notas dificultades inusuales para concentrarte, olvidos frecuentes que afectan tu rendimiento académico o laboral, o tras sufrir alguna lesión, para así poder diseñar un plan de rehabilitación adecuado.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
