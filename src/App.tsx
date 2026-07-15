@@ -362,7 +362,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
                     <li className="bento-credential-item highlighted">
                       <Sparkles size={16} />
                       <span>
-                        <strong>Especialización en curso</strong> como Psicoterapeuta Infanto-Juvenil <em>(culmina en octubre de este año)</em>.
+                        <strong>Especialista en Psicoterapia Infanto-Juvenil</strong>.
                       </span>
                     </li>
                   </ul>
