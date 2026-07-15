@@ -1457,6 +1457,7 @@ section {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  min-width: 0; /* Prevent grid overflow */
 }
 
 .form-label {
@@ -1466,6 +1467,7 @@ section {
 }
 
 .form-input-control {
+  width: 100%; /* Fill container width */
   background-color: var(--color-white-glass-solid);
   border: 1px solid rgba(28, 45, 60, 0.08);
   border-radius: 10px;
