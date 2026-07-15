@@ -261,9 +261,6 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
       <section id="inicio" className="hero">
         <div className="container hero-grid">
           <div className="hero-content">
-            <div id="hero-welcome-badge" className="badge-comfort">
-              <Sparkles size={14} /> Espacio Seguro Integral
-            </div>
             <h1 id="hero-main-heading" className="hero-title">
               Acompañamiento psicológico para tu bienestar y crecimiento.
             </h1>
