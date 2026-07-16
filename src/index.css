@@ -893,30 +893,30 @@ section {
 
 .service-title {
   font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-navy);
+  font-weight: 800;
+  color: #1a2a3a;
   margin-bottom: 0.5rem;
   text-align: left;
-  text-shadow: 0 0 8px rgba(255,255,255,0.9), 0 0 3px rgba(255,255,255,1);
+  text-shadow: 0 0 12px rgba(255,255,255,1), 0 0 6px rgba(255,255,255,1), 0 1px 3px rgba(255,255,255,0.9);
 }
 
 .service-description {
-  color: var(--color-navy-light);
+  color: #2a3d4e;
   font-size: 0.88rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 1rem;
   flex-grow: 1;
   text-align: left;
-  text-shadow: 0 0 6px rgba(255,255,255,0.85), 0 0 2px rgba(255,255,255,1);
+  text-shadow: 0 0 10px rgba(255,255,255,1), 0 0 5px rgba(255,255,255,1), 0 1px 2px rgba(255,255,255,0.9);
 }
 
 .service-includes-title {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 800;
   font-size: 0.9rem;
-  color: var(--color-navy);
+  color: #1a2a3a;
   margin-bottom: 0.75rem;
-  text-shadow: 0 0 6px rgba(255,255,255,0.9), 0 0 2px rgba(255,255,255,1);
+  text-shadow: 0 0 10px rgba(255,255,255,1), 0 0 5px rgba(255,255,255,1);
 }
 
 .service-features-list {
@@ -931,9 +931,9 @@ section {
   align-items: flex-start;
   gap: 0.65rem;
   font-size: 0.9rem;
-  font-weight: 500;
-  color: rgba(61, 80, 97, 0.95);
-  text-shadow: 0 0 5px rgba(255,255,255,0.8), 0 0 2px rgba(255,255,255,1);
+  font-weight: 600;
+  color: #2a3d4e;
+  text-shadow: 0 0 10px rgba(255,255,255,1), 0 0 4px rgba(255,255,255,1);
 }
 
 .service-feature-item svg {
