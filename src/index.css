@@ -1142,8 +1142,8 @@ section {
 #service-card-online .service-cta-btn.btn-premium,
 #service-card-presencial .service-cta-btn.btn-premium,
 .service-cta-btn-horizontal {
-  background-color: transparent;
-  color: var(--color-sage-dark);
+  background-color: var(--color-sage-dark);
+  color: #ffffff;
   border: 2px solid var(--color-sage-dark);
 }
 
@@ -1151,9 +1151,10 @@ section {
 #service-card-online .service-cta-btn.btn-premium:hover,
 #service-card-presencial .service-cta-btn.btn-premium:hover,
 .service-cta-btn-horizontal:hover {
-  background-color: var(--color-sage-dark);
+  background-color: #554484; /* Slightly darker shade of sage-dark */
+  border-color: #554484;
   color: #ffffff !important;
-  box-shadow: 0 4px 12px rgba(121, 137, 114, 0.2);
+  box-shadow: 0 4px 12px rgba(108, 90, 156, 0.25);
 }
 
 /* 2. Terracota category button (Card 2 - Recommended) */
