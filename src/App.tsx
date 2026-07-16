@@ -516,6 +516,9 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
 
             {/* SERVICE CARD 2 (RECOMMENDED EVALUATION) */}
             <div id="service-card-eval-integral" className="service-card recommended">
+              <div className="service-card-watermark">
+                <img src="/assets/eval_integral_bg.jpg" alt="" />
+              </div>
               <span className="badge-recommended">Proceso Completo</span>
               <div className="service-card-header">
                 <div className="service-card-icon-wrapper">
