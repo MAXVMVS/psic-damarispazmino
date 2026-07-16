@@ -216,7 +216,7 @@ ul {
   display: flex;
   align-items: center;
   position: relative;
-  background-image: linear-gradient(to right, rgba(248, 244, 238, 0.96) 35%, rgba(248, 244, 238, 0.85) 70%, rgba(248, 244, 238, 0.5) 100%), url('/assets/psychology_office_bg.jpg');
+  background-image: linear-gradient(to right, rgba(248, 244, 238, 0.96) 35%, rgba(248, 244, 238, 0.85) 70%, rgba(248, 244, 238, 0.5) 100%), url('/assets/psychology_office_bg.webp');
   background-size: cover;
   background-position: center;
 }
@@ -1610,7 +1610,7 @@ section {
 /* --- SECCIÓN CIERRE & CTA FINAL --- */
 .final-cta {
   background-color: var(--color-cream-bg);
-  background-image: linear-gradient(to bottom, rgba(248, 244, 238, 0.88), rgba(248, 244, 238, 0.88)), url('/assets/cozy_therapy_office_bg.jpg');
+  background-image: linear-gradient(to bottom, rgba(248, 244, 238, 0.88), rgba(248, 244, 238, 0.88)), url('/assets/cozy_therapy_office_bg.webp');
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* Parallax effect */

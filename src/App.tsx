@@ -29,7 +29,7 @@ function PsychologyLogo({ className = "" }: { className?: string }) {
   return (
     <div className={`logo-icon-container ${className}`}>
       <img 
-        src="/assets/logo_web_header.png" 
+        src="/assets/logo_web_header.webp" 
         alt="Psic. Damaris Pazmiño Logo" 
         style={{ width: '100%', height: '100%', objectFit: 'contain' }} 
       />
@@ -309,7 +309,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             <div className="circle-decor circle-decor-2"></div>
             
             <div id="hero-visual-image-wrapper" className="hero-image-wrapper">
-              <img src="/assets/cozy_therapy_chair.jpg" alt="Espacio de Acompañamiento" className="hero-main-img" />
+              <img src="/assets/cozy_therapy_chair.webp" alt="Espacio de Acompañamiento" className="hero-main-img" />
             </div>
           </div>
         </div>
@@ -325,14 +325,14 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <p id="refugio-sub" className="section-sub">Un espacio de acompañamiento cercano y especializado, donde la escucha, el conocimiento científico y el bienestar emocional se unen para apoyarte en tu proceso.</p>
             </div>
             <div className="refugio-header-visual">
-              <img src="/assets/youth_therapy_office.jpg" alt="Consultorio de Acompañamiento Juvenil" className="refugio-header-img" />
+              <img src="/assets/youth_therapy_office.webp" alt="Consultorio de Acompañamiento Juvenil" className="refugio-header-img" />
             </div>
           </div>
 
           <div className="bento-grid">
             {/* Bento Card 1: Portrait Photo */}
             <div className="bento-card bento-photo-card">
-              <img src="/assets/damaris_portrait.png" alt="Psic. Damaris Pazmiño" />
+              <img src="/assets/damaris_portrait.webp" alt="Psic. Damaris Pazmiño" />
             </div>
 
             {/* Bento Card 2: Condensed Bio */}
@@ -471,7 +471,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             {/* SERVICE CARD 1 */}
             <div id="service-card-eval-inicial" className="service-card">
               <div className="service-card-watermark">
-                <img src="/assets/eval_inicial_bg.jpg" alt="" />
+                <img src="/assets/eval_inicial_bg.webp" alt="" />
               </div>
               <div className="service-card-header">
                 <div className="service-card-icon-wrapper">
@@ -517,7 +517,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             {/* SERVICE CARD 2 (RECOMMENDED EVALUATION) */}
             <div id="service-card-eval-integral" className="service-card recommended">
               <div className="service-card-watermark">
-                <img src="/assets/eval_integral_bg.jpg" alt="" />
+                <img src="/assets/eval_integral_bg.webp" alt="" />
               </div>
               <span className="badge-recommended">Proceso Completo</span>
               <div className="service-card-header">
@@ -564,7 +564,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             {/* SERVICE CARD 3 */}
             <div id="service-card-online" className="service-card">
               <div className="service-card-watermark">
-                <img src="/assets/sesion_online_bg.jpg" alt="" />
+                <img src="/assets/sesion_online_bg.webp" alt="" />
               </div>
               <div className="service-card-header">
                 <div className="service-card-icon-wrapper">
@@ -610,7 +610,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             {/* SERVICE CARD 4 */}
             <div id="service-card-presencial" className="service-card">
               <div className="service-card-watermark">
-                <img src="/assets/sesion_presencial_bg.jpg" alt="" />
+                <img src="/assets/sesion_presencial_bg.webp" alt="" />
               </div>
               <div className="service-card-header">
                 <div className="service-card-icon-wrapper">
@@ -658,7 +658,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             {/* SPECIAL SERVICE BANNER: TALLERES HORIZONTAL */}
             <div id="service-card-arteterapia" className="service-card-horizontal">
               <div className="service-card-watermark">
-                <img src="/assets/arteterapia_bg.jpg" alt="" />
+                <img src="/assets/arteterapia_bg.webp" alt="" />
               </div>
               <span className="badge-event">Eventos & Talleres</span>
               <div className="service-horizontal-grid">
@@ -935,7 +935,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
           <div className="footer-minimalist-content">
             <div className="footer-brand-minimalist">
               <img 
-                src="/assets/logo_blanco.png" 
+                src="/assets/logo_blanco.webp" 
                 alt="Psic. Damaris Pazmiño Logo" 
                 className="footer-logo-img"
               />
