@@ -767,7 +767,7 @@ section {
 }
 
 /* Watermark for horizontal cards */
-.service-card-horizontal > *:not(.service-card-watermark) {
+.service-card-horizontal > *:not(.service-card-watermark):not(.badge-event) {
   position: relative;
   z-index: 2;
 }
@@ -1039,6 +1039,7 @@ section {
   position: absolute;
   top: 1.5rem;
   right: 2.25rem;
+  z-index: 3;
   background-color: var(--color-sage-light);
   color: var(--color-sage-dark);
   font-size: 0.75rem;
