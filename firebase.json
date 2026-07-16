@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "psic-damaris-pazmino",
     "public": "dist",
     "ignore": [
       "firebase.json",
