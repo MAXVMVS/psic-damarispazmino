@@ -1668,7 +1668,7 @@ section {
 
 .footer-brand-minimalist {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
 }
 
@@ -1677,6 +1677,7 @@ section {
   width: 2.5rem;
   object-fit: contain;
   display: block;
+  margin-top: 0.1rem;
 }
 
 .footer-brand-text {
