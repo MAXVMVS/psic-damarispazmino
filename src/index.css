@@ -894,14 +894,14 @@ section {
 .service-title {
   font-size: 1.25rem;
   font-weight: 800;
-  color: #1a2a3a;
+  color: #123e4e; /* Deep navy-petróleo, no black */
   margin-bottom: 0.5rem;
   text-align: left;
   text-shadow: 0 0 12px rgba(255,255,255,1), 0 0 6px rgba(255,255,255,1), 0 1px 3px rgba(255,255,255,0.9);
 }
 
 .service-description {
-  color: #2a3d4e;
+  color: #204c5e; /* Deep navy-petróleo, no black */
   font-size: 0.88rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -914,7 +914,7 @@ section {
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 0.9rem;
-  color: #1a2a3a;
+  color: #123e4e; /* Deep navy-petróleo, no black */
   margin-bottom: 0.75rem;
   text-shadow: 0 0 10px rgba(255,255,255,1), 0 0 5px rgba(255,255,255,1);
 }
@@ -932,7 +932,7 @@ section {
   gap: 0.65rem;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #2a3d4e;
+  color: #204c5e; /* Deep navy-petróleo, no black */
   text-shadow: 0 0 10px rgba(255,255,255,1), 0 0 4px rgba(255,255,255,1);
 }
 
@@ -960,10 +960,12 @@ section {
 
 .service-duration-label {
   font-size: 0.85rem;
-  color: var(--color-navy-light);
+  color: #204c5e; /* Deep navy-petróleo, no black */
+  font-weight: 600;
   display: flex;
   align-items: center;
   gap: 0.35rem;
+  text-shadow: 0 0 8px rgba(255,255,255,1), 0 0 3px rgba(255,255,255,1);
 }
 
 .service-duration-label svg {
@@ -974,11 +976,12 @@ section {
 .service-price-tag {
   font-family: var(--font-display);
   font-size: 1.45rem;
-  font-weight: 700;
-  color: var(--color-navy);
+  font-weight: 800;
+  color: #123e4e; /* Deep navy-petróleo, no black */
   display: flex;
   align-items: baseline;
   gap: 0.25rem;
+  text-shadow: 0 0 8px rgba(255,255,255,1), 0 0 3px rgba(255,255,255,1);
 }
 
 .service-price-sub {
@@ -1060,17 +1063,20 @@ section {
 
 .service-title-horizontal {
   font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--color-navy);
+  font-weight: 800;
+  color: #123e4e; /* Deep navy-petróleo, no black */
   margin-left: 1rem;
+  text-shadow: 0 0 12px rgba(255,255,255,1), 0 0 6px rgba(255,255,255,1);
 }
 
 .service-description-horizontal {
-  color: var(--color-navy-light);
+  color: #204c5e; /* Deep navy-petróleo, no black */
   font-size: 0.92rem;
+  font-weight: 600;
   line-height: 1.6;
   margin-bottom: 1.5rem;
   text-align: left;
+  text-shadow: 0 0 10px rgba(255,255,255,1), 0 0 5px rgba(255,255,255,1);
 }
 
 .service-meta-session-horizontal {
