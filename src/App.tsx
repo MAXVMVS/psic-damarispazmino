@@ -942,6 +942,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <div className="footer-brand-text">
                 <span id="footer-branding-title" className="footer-logo-title">Psic. Damaris <span>Pazmiño</span></span>
                 <span className="footer-logo-subtitle">Psicología Clínica & Psicoterapia</span>
+                <span className="footer-regulatory-note">Profesional habilitada para el ejercicio de la salud conforme a la normativa vigente.</span>
               </div>
             </div>
             
@@ -952,9 +953,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               </span>
             </div>
           </div>
-          <div className="footer-regulatory-note">
-            Profesional habilitada para el ejercicio de la salud conforme a la normativa vigente.
-          </div>
+
         </div>
       </footer>
 
