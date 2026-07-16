@@ -1653,7 +1653,7 @@ section {
 
 /* --- FOOTER --- */
 .footer {
-  background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-sage-dark) 60%, #174251 100%);
+  background: linear-gradient(135deg, var(--color-navy) 0%, #174251 45%, #0d2832 100%);
   color: #FAF6F0;
   padding: 3rem 0;
   border-top: 2px solid var(--color-dorado);
@@ -1695,7 +1695,7 @@ section {
 
 .footer-logo-title span {
   font-weight: 300;
-  color: var(--color-sage);
+  color: var(--color-dorado);
 }
 
 .footer-logo-subtitle {
