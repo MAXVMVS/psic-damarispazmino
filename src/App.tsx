@@ -657,6 +657,9 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
 
             {/* SPECIAL SERVICE BANNER: TALLERES HORIZONTAL */}
             <div id="service-card-arteterapia" className="service-card-horizontal">
+              <div className="service-card-watermark">
+                <img src="/assets/arteterapia_bg.jpg" alt="" />
+              </div>
               <span className="badge-event">Eventos & Talleres</span>
               <div className="service-horizontal-grid">
                 <div className="service-horizontal-info">
