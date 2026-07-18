@@ -45,6 +45,30 @@ const servicesList = [
   { title: "Sesión Presencial", price: "USD $35", type: "Cita Física" }
 ];
 
+/* --- TRACKING CONVERSIONS HELPER --- */
+const trackConversionEvent = (eventName: string, params?: Record<string, any>) => {
+  if (typeof window !== 'undefined') {
+    // Meta Pixel Event
+    if ((window as any).fbq) {
+      try {
+        (window as any).fbq('track', eventName, params);
+        console.log(`[Meta Pixel Event]: ${eventName}`, params);
+      } catch (err) {
+        console.error("Error sending event to Meta Pixel:", err);
+      }
+    }
+    // Google Analytics Event
+    if ((window as any).gtag) {
+      try {
+        (window as any).gtag('event', eventName, params);
+        console.log(`[GA4 Event]: ${eventName}`, params);
+      } catch (err) {
+        console.error("Error sending event to GA4:", err);
+      }
+    }
+  }
+};
+
 export default function App() {
   /* --- CONFIG --- */
   const whatsappNum = import.meta.env.VITE_WHATSAPP_NUMBER || "593983186044";
@@ -75,11 +99,56 @@ export default function App() {
   const [bookingDate, setBookingDate] = useState('');
   const [bookingTime, setBookingTime] = useState('');
 
+  /* Privacy Policy Modal State */
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
+
   /* Toast success state */
   const [toastMessage, setToastMessage] = useState<{title: string, desc: string} | null>(null);
   const [toastVisible, setToastVisible] = useState(false);
 
   /* --- EFFECTS --- */
+  useEffect(() => {
+    // Dynamic Google Analytics 4 Script Loading
+    const gaId = import.meta.env.VITE_GA_MEASUREMENT_ID;
+    if (gaId && !document.getElementById('ga-script')) {
+      const script1 = document.createElement('script');
+      script1.async = true;
+      script1.id = 'ga-script';
+      script1.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+      document.head.appendChild(script1);
+
+      const script2 = document.createElement('script');
+      script2.id = 'ga-init';
+      script2.innerHTML = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${gaId}');
+      `;
+      document.head.appendChild(script2);
+    }
+
+    // Dynamic Meta Pixel Script Loading
+    const pixelId = import.meta.env.VITE_META_PIXEL_ID;
+    if (pixelId && !document.getElementById('meta-pixel-script')) {
+      const script = document.createElement('script');
+      script.id = 'meta-pixel-script';
+      script.innerHTML = `
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '${pixelId}');
+        fbq('track', 'PageView');
+      `;
+      document.head.appendChild(script);
+    }
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -127,11 +196,15 @@ export default function App() {
   };
 
   const handleFloatingWhatsappClick = () => {
+    trackConversionEvent('Contact', { content_name: 'WhatsApp Flotante' });
+    trackConversionEvent('whatsapp_click', { tipo: 'flotante' });
     const text = "Hola Psic. Damaris Pazmiño, me gustaría recibir información sobre sus consultas y servicios de psicología.";
     window.open(`https://wa.me/${whatsappNum}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   const handleArteterapiaWhatsappClick = () => {
+    trackConversionEvent('Contact', { content_name: 'WhatsApp Arteterapia' });
+    trackConversionEvent('arteterapia_click');
     const text = "Hola, Psic. Damaris. Me gustaría conocer las fechas disponibles para sus próximos talleres de arteterapia y reservar un cupo.";
     window.open(`https://wa.me/${whatsappNum}?text=${encodeURIComponent(text)}`, '_blank');
   };
@@ -141,6 +214,14 @@ export default function App() {
     const formspreeId = import.meta.env.VITE_FORMSPREE_ID;
     const currentService = servicesList.find(s => s.title === bookingServiceTitle);
     const serviceText = currentService ? `${currentService.title} (${currentService.price})` : "Consulta de Orientación";
+
+    // Registrar conversión antes del envío
+    trackConversionEvent('Lead', { 
+      content_name: serviceText,
+      value: 0.00,
+      currency: 'USD'
+    });
+    trackConversionEvent('booking_submit', { servicio: serviceText });
 
     // 0. Envío a Firebase Firestore
     const bookingData = {
@@ -948,6 +1029,17 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             
             <div className="footer-meta-minimalist">
               <span>&copy; {new Date().getFullYear()} Psic. Damaris Pazmiño. Todos los derechos reservados.</span>
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', margin: '0.4rem 0' }}>
+                <button 
+                  id="footer-privacy-btn"
+                  onClick={() => setIsPrivacyModalOpen(true)}
+                  style={{ background: 'none', border: 'none', color: 'rgba(255, 255, 255, 0.6)', fontSize: '0.8rem', cursor: 'pointer', textDecoration: 'underline', padding: 0, transition: 'color 0.2s' }}
+                  onMouseOver={(e) => e.currentTarget.style.color = '#ffffff'}
+                  onMouseOut={(e) => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.6)'}
+                >
+                  Política de Privacidad
+                </button>
+              </div>
               <span className="footer-studio-attribution">
                 Desarrollo por <a href="https://maxai.studio" target="_blank" rel="noopener noreferrer">MAX AI - Digital Studio</a>.
               </span>
@@ -1110,6 +1202,74 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
         <div className="toast-content-wrapper">
           <span className="toast-title-text">{toastMessage?.title}</span>
           <span className="toast-sub-text">{toastMessage?.desc}</span>
+        </div>
+      </div>
+
+      {/* --- PRIVACY POLICY GLASSMORPHISM CONTAINER (MODAL) --- */}
+      <div 
+        id="privacy-modal-overlay" 
+        className={`booking-modal-overlay ${isPrivacyModalOpen ? 'opened' : ''}`}
+        onClick={(e) => { if(e.target === e.currentTarget) setIsPrivacyModalOpen(false); }}
+        style={{ pointerEvents: isPrivacyModalOpen ? 'auto' : 'none' }}
+      >
+        <div id="privacy-modal-card-element" className="booking-modal-card" style={{ maxWidth: '650px' }}>
+          <button id="close-privacy-modal" className="booking-modal-close-btn" onClick={() => setIsPrivacyModalOpen(false)}>
+            <X size={16} />
+          </button>
+          
+          <div className="booking-modal-header" style={{ paddingBottom: '1rem', borderBottom: '1px solid rgba(28,45,60,0.08)' }}>
+            <span className="section-tag" style={{ fontSize: '0.85rem', marginBottom: '0.2rem', fontWeight: 700 }}>Cumplimiento Legal LOPDP</span>
+            <h3 className="booking-modal-title">Política de Privacidad</h3>
+            <p className="booking-modal-subtitle">
+              Protección y confidencialidad en el tratamiento de tus datos personales.
+            </p>
+          </div>
+
+          <div className="booking-modal-body" style={{ overflowY: 'auto', maxHeight: '60vh', padding: '1.5rem', fontSize: '0.9rem', color: 'var(--color-navy-light)', lineHeight: '1.6', textAlign: 'left' }}>
+            <p>
+              De conformidad con la <strong>Ley Orgánica de Protección de Datos Personales (LOPDP)</strong> de Ecuador, le informamos que al utilizar nuestros formularios de contacto y reserva, usted acepta el tratamiento de sus datos personales bajo los siguientes términos:
+            </p>
+
+            <h4 style={{ color: 'var(--color-navy)', marginTop: '1.25rem', marginBottom: '0.5rem', fontWeight: 600 }}>1. Responsable del Tratamiento</h4>
+            <p>
+              El responsable del tratamiento de sus datos es la <strong>Psic. Damaris Pazmiño</strong>, Psicóloga Clínica en el libre ejercicio de su profesión. Correo de contacto: <a href={`mailto:${emailAddress}`} style={{ color: 'var(--color-sage-dark)', textDecoration: 'underline' }}>{emailAddress}</a>.
+            </p>
+
+            <h4 style={{ color: 'var(--color-navy)', marginTop: '1.25rem', marginBottom: '0.5rem', fontWeight: 600 }}>2. Datos Recopilados y Finalidad</h4>
+            <p>
+              Recopilamos únicamente los datos necesarios para gestionar sus solicitudes de consulta y reservas: nombre completo, correo electrónico, teléfono/WhatsApp, y la fecha/hora sugeridas. Estos datos se utilizan exclusivamente para:
+            </p>
+            <ul style={{ paddingLeft: '1.25rem', listStyleType: 'disc', margin: '0.5rem 0' }}>
+              <li>Gestionar y confirmar su pre-reserva de consulta.</li>
+              <li>Establecer contacto directo vía WhatsApp o llamada telefónica para coordinar la cita.</li>
+              <li>Atender consultas y proveer información de servicios terapéuticos o de arteterapia.</li>
+            </ul>
+
+            <h4 style={{ color: 'var(--color-navy)', marginTop: '1.25rem', marginBottom: '0.5rem', fontWeight: 600 }}>3. Confidencialidad Médica y Secreto Profesional</h4>
+            <p>
+              Toda información relativa a sus consultas, estado de salud o procesos terapéuticos está protegida por el <strong>secreto profesional y la confidencialidad clínica</strong> aplicable al ejercicio de la psicología clínica. Bajo ninguna circunstancia esta información médica sensible es compartida, vendida o transferida a terceros, y se procesa bajo medidas de seguridad digital en nuestra base de datos.
+            </p>
+
+            <h4 style={{ color: 'var(--color-navy)', marginTop: '1.25rem', marginBottom: '0.5rem', fontWeight: 600 }}>4. Derechos ARCO+</h4>
+            <p>
+              Usted tiene derecho a ejercer sus derechos de acceso, rectificación, cancelación, oposición, eliminación y portabilidad de sus datos personales. Para ejercerlos, puede enviar una solicitud por escrito al correo electrónico oficial: <a href={`mailto:${emailAddress}`} style={{ color: 'var(--color-sage-dark)', textDecoration: 'underline' }}>{emailAddress}</a>.
+            </p>
+
+            <h4 style={{ color: 'var(--color-navy)', marginTop: '1.25rem', marginBottom: '0.5rem', fontWeight: 600 }}>5. Conservación de los Datos</h4>
+            <p>
+              Los datos recopilados a través del formulario de reserva se conservarán únicamente durante el tiempo necesario para la correcta prestación del servicio profesional solicitado o hasta que usted solicite su eliminación, salvo por requerimientos de conservación de historial clínico previstos en la normativa de salud de Ecuador.
+            </p>
+          </div>
+
+          <div className="booking-modal-footer" style={{ padding: '1.25rem', borderTop: '1px solid rgba(28,45,60,0.08)', display: 'flex', justifyContent: 'flex-end', gap: '1rem' }}>
+            <button 
+              className="btn-premium" 
+              style={{ backgroundColor: 'var(--color-navy)', padding: '0.5rem 1.5rem', fontSize: '0.9rem' }}
+              onClick={() => setIsPrivacyModalOpen(false)}
+            >
+              Cerrar
+            </button>
+          </div>
         </div>
       </div>
     </>
