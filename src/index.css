@@ -1207,6 +1207,7 @@ section {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
   gap: 4rem;
+  align-items: center;
 }
 
 .faq-title-sticky {
