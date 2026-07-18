@@ -1211,8 +1211,7 @@ section {
 }
 
 .faq-title-sticky {
-  position: sticky;
-  top: 7rem;
+  position: relative;
 }
 
 .faq-list-container {
