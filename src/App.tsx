@@ -397,7 +397,7 @@ Quedo atento/a para coordinar el horario de la consulta. ¡Muchas gracias!`;
           <div className="refugio-header-container">
             <div className="section-head">
               <span id="refugio-tag" className="section-tag">Tu lugar seguro</span>
-              <h2 id="refugio-title" className="section-title">Sobre mí y mi Enfoque Terapéutico</h2>
+              <h2 id="refugio-title" className="section-title">Facilitadora de Talleres</h2>
               <p id="refugio-sub" className="section-sub">Un espacio de acompañamiento cercano y especializado, donde la escucha, el conocimiento científico y el bienestar emocional se unen para apoyarte en tu proceso.</p>
             </div>
             <div className="refugio-header-visual">
