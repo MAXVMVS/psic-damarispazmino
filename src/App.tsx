@@ -97,7 +97,6 @@ export default function App() {
   const [bookingEmail, setBookingEmail] = useState('');
   const [bookingPhone, setBookingPhone] = useState('');
   const [bookingDate, setBookingDate] = useState('');
-  const [bookingTime, setBookingTime] = useState('');
 
   /* Privacy Policy Modal State */
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
@@ -230,7 +229,6 @@ export default function App() {
       telefono: bookingPhone,
       servicio: serviceText,
       fecha: bookingDate,
-      hora: bookingTime,
       tipo: 'Solicitud de Pre-Reserva',
       createdAt: new Date().toISOString()
     };
@@ -250,7 +248,6 @@ export default function App() {
           telefono: bookingPhone,
           servicio: serviceText,
           fecha: bookingDate,
-          hora: bookingTime,
           tipo: 'Solicitud de Pre-Reserva'
         })
       }).catch(err => console.error("Error al enviar a Formspree:", err));
@@ -262,10 +259,9 @@ export default function App() {
 - *Correo:* ${bookingEmail}
 - *Teléfono:* ${bookingPhone}
 - *Servicio:* ${serviceText}
-- *Fecha sugerida:* ${bookingDate}
-- *Horario sugerido:* ${bookingTime}
+- *Fecha tentativa:* ${bookingDate}
 
-Quedo atento/a a su respuesta. ¡Muchas gracias!`;
+Quedo atento/a para coordinar el horario de la consulta. ¡Muchas gracias!`;
 
     window.open(`https://wa.me/${whatsappNum}?text=${encodeURIComponent(message)}`, '_blank');
 
@@ -280,7 +276,6 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
     setBookingEmail('');
     setBookingPhone('');
     setBookingDate('');
-    setBookingTime('');
   };
 
   return (
@@ -1139,37 +1134,16 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
                 </div>
               </div>
 
-              <div className="form-group-double">
-                <div className="form-field-group">
-                  <label className="form-label" htmlFor="book-date">Fecha tentativa *</label>
-                  <input 
-                    type="date" 
-                    id="book-date" 
-                    className="form-input-control" 
-                    required 
-                    value={bookingDate}
-                    onChange={(e) => setBookingDate(e.target.value)}
-                  />
-                </div>
-                <div className="form-field-group">
-                  <label className="form-label" htmlFor="book-time">Hora sugerida *</label>
-                  <select 
-                    id="book-time" 
-                    className="form-input-control form-select-control" 
-                    required 
-                    value={bookingTime}
-                    onChange={(e) => setBookingTime(e.target.value)}
-                  >
-                    <option value="">Selecciona horario</option>
-                    <option value="09:00 - 10:00">09:00 AM - 10:00 AM</option>
-                    <option value="10:00 - 11:00">10:00 AM - 11:00 AM</option>
-                    <option value="11:00 - 12:00">11:00 AM - 12:00 PM</option>
-                    <option value="15:00 - 16:00">03:00 PM - 04:00 PM</option>
-                    <option value="16:00 - 17:00">04:00 PM - 05:00 PM</option>
-                    <option value="17:00 - 18:00">05:00 PM - 06:00 PM</option>
-                    <option value="18:00 - 19:00">06:00 PM - 07:00 PM</option>
-                  </select>
-                </div>
+              <div className="form-field-group">
+                <label className="form-label" htmlFor="book-date">Fecha tentativa propuesta *</label>
+                <input 
+                  type="date" 
+                  id="book-date" 
+                  className="form-input-control" 
+                  required 
+                  value={bookingDate}
+                  onChange={(e) => setBookingDate(e.target.value)}
+                />
               </div>
 
               <button 
