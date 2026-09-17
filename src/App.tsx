@@ -203,9 +203,9 @@ export default function App() {
   };
 
   const handleArteterapiaWhatsappClick = () => {
-    trackConversionEvent('Contact', { content_name: 'WhatsApp Arteterapia' });
-    trackConversionEvent('arteterapia_click');
-    const text = "Hola, Psic. Damaris. Me gustaría conocer las fechas disponibles para sus próximos talleres de arteterapia y reservar un cupo.";
+    trackConversionEvent('Contact', { content_name: 'WhatsApp Talleres Terapéuticos' });
+    trackConversionEvent('talleres_terapeuticos_click');
+    const text = "Hola, Psic. Damaris. Me gustaría conocer las fechas disponibles para sus próximos talleres terapéuticos y reservar un cupo.";
     window.open(`https://wa.me/${whatsappNum}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
@@ -424,7 +424,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
                   <h3 className="bento-card-title" style={{ fontSize: '1.65rem', marginBottom: '1.5rem', marginTop: 0 }}>Hola, soy Damaris Pazmiño</h3>
                   
                   <p className="bento-card-p" style={{ fontWeight: 500, color: 'var(--color-navy)' }}>
-                    Psicóloga y Neuropsicóloga, especialista en psicoterapia infanto-juvenil y adultos, y facilitadora de talleres de Arteterapia.
+                    Psicóloga y Neuropsicóloga, especialista en psicoterapia infanto-juvenil y adultos, y facilitadora de talleres terapéuticos.
                   </p>
                   <p className="bento-card-p">
                     Ofrezco un espacio seguro y profesional para comprender tus emociones, fortalecer tus recursos personales y desarrollar estrategias prácticas basadas en evidencia científica.
@@ -748,18 +748,15 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
                     <div className="service-card-icon-wrapper">
                       <Palette size={20} />
                     </div>
-                    <h3 className="service-title-horizontal">Talleres de Arteterapia</h3>
+                    <h3 className="service-title-horizontal">Talleres Terapéuticos</h3>
                   </div>
                   <p className="service-description-horizontal">
-                    Talleres vivenciales grupales que utilizan el arte como canal terapéutico de expresión y autoconocimiento, diseñados para conectar con tus emociones de forma creativa.
+                    Talleres vivenciales grupales diseñados como un espacio de expresión, autoconocimiento y regulación emocional para potenciar tu bienestar de forma dinámica y guiada.
                   </p>
                   
                   <div className="service-meta-session-horizontal">
                     <span className="service-duration-label" style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.88rem', color: 'var(--color-navy-light)' }}>
                       <Clock size={14} /> Duración: 3 horas
-                    </span>
-                    <span className="service-price-tag">
-                      USD $35 <span className="service-price-sub">/ participante</span>
                     </span>
                   </div>
                 </div>
@@ -768,13 +765,13 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
                   <span className="service-includes-title">¿Qué incluye?</span>
                   <ul className="service-features-list">
                     <li className="service-feature-item">
-                      <Check size={16} /> Actividades artísticas con objetivos terapéuticos dirigidos.
+                      <Check size={16} /> Dinámicas y actividades con objetivos terapéuticos dirigidos.
                     </li>
                     <li className="service-feature-item">
-                      <Check size={16} /> Desarrollo de habilidades emocionales, sociales y creativas.
+                      <Check size={16} /> Desarrollo de habilidades emocionales, sociales y de bienestar.
                     </li>
                     <li className="service-feature-item">
-                      <Check size={16} /> Material de apoyo y acompañamiento profesional.
+                      <Check size={16} /> Material de trabajo y acompañamiento profesional.
                     </li>
                   </ul>
                   
@@ -1242,7 +1239,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
             <ul style={{ paddingLeft: '1.25rem', listStyleType: 'disc', margin: '0.5rem 0' }}>
               <li>Gestionar y confirmar su pre-reserva de consulta.</li>
               <li>Establecer contacto directo vía WhatsApp o llamada telefónica para coordinar la cita.</li>
-              <li>Atender consultas y proveer información de servicios terapéuticos o de arteterapia.</li>
+              <li>Atender consultas y proveer información de servicios y talleres terapéuticos.</li>
             </ul>
 
             <h4 style={{ color: 'var(--color-navy)', marginTop: '1.25rem', marginBottom: '0.5rem', fontWeight: 600 }}>3. Confidencialidad y Secreto Profesional</h4>
