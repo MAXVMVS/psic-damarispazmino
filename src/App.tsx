@@ -1245,9 +1245,9 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               <li>Atender consultas y proveer información de servicios terapéuticos o de arteterapia.</li>
             </ul>
 
-            <h4 style={{ color: 'var(--color-navy)', marginTop: '1.25rem', marginBottom: '0.5rem', fontWeight: 600 }}>3. Confidencialidad Médica y Secreto Profesional</h4>
+            <h4 style={{ color: 'var(--color-navy)', marginTop: '1.25rem', marginBottom: '0.5rem', fontWeight: 600 }}>3. Confidencialidad y Secreto Profesional</h4>
             <p>
-              Toda información relativa a sus consultas, estado de salud o procesos terapéuticos está protegida por el <strong>secreto profesional y la debida confidencialidad</strong> aplicable al ejercicio de la psicología. Bajo ninguna circunstancia esta información médica sensible es compartida, vendida o transferida a terceros, y se procesa bajo medidas de seguridad digital en nuestra base de datos.
+              Toda información relativa a sus consultas, estado de salud o procesos terapéuticos está protegida por el <strong>secreto profesional y la debida confidencialidad</strong> aplicable al ejercicio de la psicología. Bajo ninguna circunstancia esta información sensible es compartida, vendida o transferida a terceros, y se procesa bajo estrictas medidas de seguridad digital en nuestra base de datos.
             </p>
 
             <h4 style={{ color: 'var(--color-navy)', marginTop: '1.25rem', marginBottom: '0.5rem', fontWeight: 600 }}>4. Derechos ARCO+</h4>
@@ -1257,7 +1257,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
 
             <h4 style={{ color: 'var(--color-navy)', marginTop: '1.25rem', marginBottom: '0.5rem', fontWeight: 600 }}>5. Conservación de los Datos</h4>
             <p>
-              Los datos recopilados a través del formulario de reserva se conservarán únicamente durante el tiempo necesario para la correcta prestación del servicio profesional solicitado o hasta que usted solicite su eliminación, salvo por requerimientos de conservación de historial clínico previstos en la normativa de salud de Ecuador.
+              Los datos recopilados a través del formulario de reserva se conservarán únicamente durante el tiempo necesario para la correcta prestación del servicio profesional solicitado o hasta que usted solicite su eliminación, salvo por requerimientos de conservación de expedientes e historial de atención previstos en la normativa de salud de Ecuador.
             </p>
           </div>
 
