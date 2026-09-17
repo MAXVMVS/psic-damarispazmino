@@ -1208,7 +1208,7 @@ Quedo atento/a para coordinar el horario de la consulta. ¡Muchas gracias!`;
 
             <h4 style={{ color: 'var(--color-navy)', marginTop: '1.25rem', marginBottom: '0.5rem', fontWeight: 600 }}>2. Datos Recopilados y Finalidad</h4>
             <p>
-              Recopilamos únicamente los datos necesarios para gestionar sus solicitudes de consulta y reservas: nombre completo, correo electrónico, teléfono/WhatsApp, y la fecha/hora sugeridas. Estos datos se utilizan exclusivamente para:
+              Recopilamos únicamente los datos necesarios para gestionar sus solicitudes de consulta y reservas: nombre completo, correo electrónico, teléfono/WhatsApp, y la fecha tentativa propuesta. Estos datos se utilizan exclusivamente para:
             </p>
             <ul style={{ paddingLeft: '1.25rem', listStyleType: 'disc', margin: '0.5rem 0' }}>
               <li>Gestionar y confirmar su pre-reserva de consulta.</li>
