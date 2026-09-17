@@ -424,7 +424,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
                   <h3 className="bento-card-title" style={{ fontSize: '1.65rem', marginBottom: '1.5rem', marginTop: 0 }}>Hola, soy Damaris Pazmiño</h3>
                   
                   <p className="bento-card-p" style={{ fontWeight: 500, color: 'var(--color-navy)' }}>
-                    Psicóloga y Neuropsicóloga Clínica, especialista en psicoterapia infanto-juvenil y adultos, y facilitadora de talleres de Arteterapia.
+                    Psicóloga y Neuropsicóloga, especialista en psicoterapia infanto-juvenil y adultos, y facilitadora de talleres de Arteterapia.
                   </p>
                   <p className="bento-card-p">
                     Ofrezco un espacio seguro y profesional para comprender tus emociones, fortalecer tus recursos personales y desarrollar estrategias prácticas basadas en evidencia científica.
@@ -444,7 +444,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
                       <span className="bento-credential-icon-box">
                         <Check size={12} />
                       </span>
-                      <span><strong>Psicóloga Clínica</strong> registrada en el SENESCYT.</span>
+                      <span><strong>Psicóloga</strong> registrada en el SENESCYT.</span>
                     </li>
                     <li className="bento-credential-item">
                       <span className="bento-credential-icon-box">
@@ -1022,7 +1022,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
               />
               <div className="footer-brand-text">
                 <span id="footer-branding-title" className="footer-logo-title">Psic. Damaris <span>Pazmiño</span></span>
-                <span className="footer-logo-subtitle">Psicología Clínica & Psicoterapia</span>
+                <span className="footer-logo-subtitle">Psicología & Psicoterapia</span>
                 <span className="footer-regulatory-note">Profesional habilitada para el ejercicio de la salud conforme a la normativa vigente.</span>
               </div>
             </div>
@@ -1232,7 +1232,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
 
             <h4 style={{ color: 'var(--color-navy)', marginTop: '1.25rem', marginBottom: '0.5rem', fontWeight: 600 }}>1. Responsable del Tratamiento</h4>
             <p>
-              El responsable del tratamiento de sus datos es la <strong>Psic. Damaris Pazmiño</strong>, Psicóloga Clínica en el libre ejercicio de su profesión. Correo de contacto: <a href={`mailto:${emailAddress}`} style={{ color: 'var(--color-sage-dark)', textDecoration: 'underline' }}>{emailAddress}</a>.
+              El responsable del tratamiento de sus datos es la <strong>Psic. Damaris Pazmiño</strong>, Psicóloga en el libre ejercicio de su profesión. Correo de contacto: <a href={`mailto:${emailAddress}`} style={{ color: 'var(--color-sage-dark)', textDecoration: 'underline' }}>{emailAddress}</a>.
             </p>
 
             <h4 style={{ color: 'var(--color-navy)', marginTop: '1.25rem', marginBottom: '0.5rem', fontWeight: 600 }}>2. Datos Recopilados y Finalidad</h4>
@@ -1247,7 +1247,7 @@ Quedo atento/a a su respuesta. ¡Muchas gracias!`;
 
             <h4 style={{ color: 'var(--color-navy)', marginTop: '1.25rem', marginBottom: '0.5rem', fontWeight: 600 }}>3. Confidencialidad Médica y Secreto Profesional</h4>
             <p>
-              Toda información relativa a sus consultas, estado de salud o procesos terapéuticos está protegida por el <strong>secreto profesional y la confidencialidad clínica</strong> aplicable al ejercicio de la psicología clínica. Bajo ninguna circunstancia esta información médica sensible es compartida, vendida o transferida a terceros, y se procesa bajo medidas de seguridad digital en nuestra base de datos.
+              Toda información relativa a sus consultas, estado de salud o procesos terapéuticos está protegida por el <strong>secreto profesional y la debida confidencialidad</strong> aplicable al ejercicio de la psicología. Bajo ninguna circunstancia esta información médica sensible es compartida, vendida o transferida a terceros, y se procesa bajo medidas de seguridad digital en nuestra base de datos.
             </p>
 
             <h4 style={{ color: 'var(--color-navy)', marginTop: '1.25rem', marginBottom: '0.5rem', fontWeight: 600 }}>4. Derechos ARCO+</h4>
